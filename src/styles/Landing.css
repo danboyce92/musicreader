@@ -1,0 +1,19 @@
+.registerBox {
+    position: absolute;
+    color: blueviolet;
+    margin-top: -550px;
+    margin-left: 50px;
+}
+
+.loginBox {
+position: absolute;
+margin-top: -550px;
+margin-left: 600px;
+}
+
+.getLoggedIn {
+    margin-left: 04px;
+    margin-top: 0px;
+    color: #FEE440;
+  }
+  
