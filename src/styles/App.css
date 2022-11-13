@@ -14,8 +14,6 @@
 }
 
 .container {
-
-
   z-index: 1;
   width: 900px;
   height: 700px;
@@ -27,3 +25,20 @@
   border-radius: 15%;
 }
 
+#signOut {
+  margin-top: -60px;
+  float: right;
+  margin-right: 0px;
+}
+
+.getLoggedIn {
+  margin-left: 250px;
+  margin-top: 420px;
+  color: #FEE440;
+}
+
+.loggedIn {
+  margin-left: 100px;
+  margin-top: 420px;
+  color: #FEE440;
+}
