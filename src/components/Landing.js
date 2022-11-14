@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../firebase/firebase';
 import '../styles/Landing.css';
@@ -10,12 +10,14 @@ const Landing = (props) => {
     const [loginEmail, setLoginEmail] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
 
-    const [user, setUser] = useState({});
 
-    onAuthStateChanged(auth, (currentUser) => {
-        setUser(currentUser);
 
-    })
+    useEffect(() => {
+        onAuthStateChanged(auth, (currentUser) => {
+            props.changeUserName = currentUser;
+        })
+    }, [props.changeUserName])
+
 
     const loginButton = async () => {
 
@@ -25,6 +27,7 @@ const Landing = (props) => {
                 loginEmail,
                 loginPassword
                 );
+                console.log(user)
             } catch (error) {
                 console.log(error.message);
             }
@@ -49,57 +52,73 @@ const Landing = (props) => {
     return (
         <div>
 
-            <div className="signInBox">
-
-            <div className="loginBox">
-                <h3>Login here</h3>
+<div className="ui placeholder segment">
+    <div className="ui two column very relaxed stackable grid">
+        <div className="column">
+        <div className="ui form">
+            <div className="field">
+            <label>Email</label>
+            <div className="ui left icon input">
                 <input 
-                type='text'
-                value={loginEmail}
-                placeholder='Email...' 
-                onChange={(event) => setLoginEmail(event.target.value)}
+                type="text" 
+                placeholder="Email"
+                onChange={(e) => {setLoginEmail(e.target.value)}}
                 />
-                <br></br>
-                <br></br>
-                <input 
-                placeholder='Password...'
-                value='' 
-                onChange={(e) => setLoginPassword(e.target.value)}
-                />
-
-                <br></br>
-                <br></br>
-                <button 
-                id="loginButton"
-                onClick={loginButton}
-                >Login</button>
+                <i className="user icon"></i>
             </div>
-
-
-            <div className="registerBox">
-                <h3>Register here</h3>
-                <input 
-                value="text"
-                placeholder='Email...' 
-                onChange={(e) => setRegisterEmail(e.target.value)}
-                />
-                
-                <br></br>
-                <br></br>
-                <input 
-                value="text"
-                placeholder='Password...' 
-                onChange={(e) => setRegisterPassword(e.target.value)}
-                />
-
-                <br></br>
-                <br></br>
-                <button
-                onClick={registerButton}
-                >Create User</button>
             </div>
-
+            <div className="field">
+            <label>Password</label>
+            <div className="ui left icon input">
+                <input 
+                type="password"
+                onChange={(event) => {setLoginPassword(event.target.value)}}
+                />
+                <i className="lock icon"></i>
             </div>
+            </div>
+            <button 
+            className="ui blue submit button"
+            onClick={() => loginButton}
+            >Login</button>
+        </div>
+        </div>
+        <div className="middle aligned column">
+        <div className="ui form">
+            <div className="field">
+            <label>Email</label>
+            <div className="ui left icon input">
+                <input 
+                type="text" 
+                placeholder="Email" 
+                onChange={(event) => {setRegisterEmail(event.target.value)}}
+                />
+                <i className="user icon"></i>
+            </div>
+            </div>
+            <div className="field">
+            <label>Password</label>
+            <div className="ui left icon input">
+                <input 
+                type="password" 
+                onChange={(event) => {setRegisterPassword(event.target.value)}}
+                />
+                <i className="lock icon"></i>
+            </div>
+            </div>
+            <button 
+            className="ui blue submit button"
+            onClick={() => registerButton}
+            >Register</button>
+        </div>
+        </div>
+    </div>
+    <div className="ui vertical divider">
+        Or
+    </div>
+    </div>
+
+
     
         </div>
     )

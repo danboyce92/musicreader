@@ -6,7 +6,7 @@ import './styles/App.css';
 
 function App() {
 
-  const[userName, setUserName] = useState({});
+  const[userName, setUserName] = useState();
 
 
   const logout = async () => {
@@ -28,19 +28,14 @@ function App() {
         
 
         <Landing 
-        changeUserName={userName => setUserName(userName)}
+        changeUserName={(userName) => setUserName(userName)}
         />
-
-
 
       </div>
 
-      <h4 className="loggedIn" >user: {userName?.email} </h4>
+      <h4 className="loggedIn" >User: {userName? userName.email : "Not logged in"} </h4>
       
-      <div className="getLoggedIn">
-                Please Login or Register to play..
 
-            </div>
     </div>
   );
 }
