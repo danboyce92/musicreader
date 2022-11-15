@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+import React, { useState } from 'react';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../firebase/firebase';
 import '../styles/Landing.css';
 
@@ -12,11 +12,7 @@ const Landing = (props) => {
 
 
 
-    useEffect(() => {
-        onAuthStateChanged(auth, (currentUser) => {
-            props.changeUserName = currentUser;
-        })
-    }, [props.changeUserName])
+
 
 
     const loginButton = async () => {
@@ -27,7 +23,7 @@ const Landing = (props) => {
                 loginEmail,
                 loginPassword
                 );
-                console.log(user)
+
             } catch (error) {
                 console.log(error.message);
             }
@@ -41,7 +37,7 @@ const Landing = (props) => {
             registerEmail,
             registerPassword
             );
-            console.log(user)
+
         } catch (error) {
             console.log(error.message);
         }
@@ -79,7 +75,7 @@ const Landing = (props) => {
             </div>
             <button 
             className="ui blue submit button"
-            onClick={() => loginButton}
+            onClick={loginButton}
             >Login</button>
         </div>
         </div>
@@ -108,7 +104,7 @@ const Landing = (props) => {
             </div>
             <button 
             className="ui blue submit button"
-            onClick={() => registerButton}
+            onClick={registerButton}
             >Register</button>
         </div>
         </div>

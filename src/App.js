@@ -1,17 +1,22 @@
-import React, { useState } from 'react';
-import { signOut } from "firebase/auth";
+import React, { useState, useEffect } from 'react';
+import { onAuthStateChanged } from "firebase/auth";
 import { auth } from './firebase/firebase';
 import Landing from './components/Landing';
+import SignoutButton from './components/SignoutButton';
+import MainMenu from './components/MainMenu';
 import './styles/App.css';
 
 function App() {
 
-  const[userName, setUserName] = useState();
+  const[user, setUser] = useState();
 
 
-  const logout = async () => {
-    await signOut(auth);
-}
+  useEffect(() => {
+    onAuthStateChanged(auth, (currentUser) => {
+        setUser(currentUser);
+        
+    })
+}, [user])
 
   return (
     <div className="app">
@@ -20,20 +25,22 @@ function App() {
 
       <div className="container">
 
-        <button 
-        className="ui semantic big inverted purple button" 
-        id="signOut"
-        onClick={logout}
-        >Signout</button>
-        
 
-        <Landing 
-        changeUserName={(userName) => setUserName(userName)}
-        />
+
+        { !user  
+        ? <Landing /> 
+        : <SignoutButton />
+        }
+
+        {user &&
+        <MainMenu />
+        }
+
+
 
       </div>
 
-      <h4 className="loggedIn" >User: {userName? userName.email : "Not logged in"} </h4>
+      <h4 className="loggedIn" >User: {user? user.email : "Not logged in"} </h4>
       
 
     </div>
