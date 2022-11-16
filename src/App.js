@@ -37,10 +37,10 @@ function App() {
         }
 
 
-
+<h4 className="loggedIn" >User: {user? user.email : "Not logged in"} </h4>
       </div>
 
-      <h4 className="loggedIn" >User: {user? user.email : "Not logged in"} </h4>
+      
       
 
     </div>

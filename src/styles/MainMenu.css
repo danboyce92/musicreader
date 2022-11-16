@@ -1,0 +1,88 @@
+.mainMenu {
+    
+    text-align: center;
+    justify-content: center;
+    z-index: 2;
+    background-color: black;
+    height: 400px;
+
+}
+
+.playFor {
+    position: relative;
+    top: -45px;
+    left: -380px;
+    color: #FEE440;
+    font-size: 32px;
+}
+
+#oneMin {
+position: relative;
+top: -80px;
+left: -60px;
+color: #FEE440;
+background-color: #9152CB;
+border: 2px solid white;
+
+}
+
+#oneMin:Hover {
+    color: blue;
+    background-color: #FEE440;
+}
+
+#twoMin {
+    position: relative;
+    top: -80px;
+    left: -20px;
+    color: #FEE440;
+    background-color: #9152CB;
+    border: 2px solid white;
+
+}
+
+#twoMin:Hover {
+    color: blue;
+    background-color: #FEE440;
+}
+
+#fiveMin {
+    position: relative;
+    top: -80px;
+    left: 20px;
+    color: #FEE440;
+    background-color: #9152CB;
+    border: 2px solid white;
+
+}
+
+#fiveMin:Hover {
+    color: blue;
+    background-color: #FEE440;
+}
+
+.ready {
+    position: relative;
+    margin-left: 160px;
+    border-radius: 12px;
+    z-index: 3;
+    height: 120px;
+    width: 60%;
+    font-size: 32px;
+    padding: 15px;
+    background-color: aliceblue;
+}
+
+#noButton {
+    position: relative;
+    margin-top: 30px;
+    left: -40px;
+
+}
+
+#yesButton {
+    position: relative;
+    margin-top: 30px;
+    left: 40px;
+
+}
