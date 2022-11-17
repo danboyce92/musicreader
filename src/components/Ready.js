@@ -4,8 +4,13 @@ import '../styles/MainMenu.css';
 
 const Ready = (props) => {
 
-    const handleTime = () => {
+    const handleTimeNo = () => {
         props.handleTimeChosen()
+    }
+
+    const handleTimeYes = () => {
+        props.handleTimeChosen()
+        props.handleGameBegin()
     }
 
     return(
@@ -16,13 +21,13 @@ const Ready = (props) => {
                 <button 
                 className="ui semantic red button"
                 id="noButton"
-                onClick={handleTime}
+                onClick={handleTimeNo}
                 >No, choose different time</button>
 
                 <button
                 className="ui semantic green button"
                 id="yesButton"
-                
+                onClick={handleTimeYes}
                 >Yes</button>
 
             </div>

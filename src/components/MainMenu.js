@@ -1,70 +1,49 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Ready from './Ready';
 import '../styles/MainMenu.css';
+import TimerOptions from './TimerOptions';
 
 const MainMenu = () => {
-    const[gameTime, setGameTime] = useState('');
-    const[timeChosen, setTimeChosen] = useState(false)
 
-
-    const handleGameTimeOne = async () => {
-        setGameTime(1)
-        setTimeChosen(true)
-    }
-
-    const handleGameTimeTwo = async () => {
-        setGameTime(2)
-        setTimeChosen(true)
-    }
-
-    const handleGameTimeFive = async () => {
-        setGameTime(5)
-        setTimeChosen(true)
-    }
+    const[timeChosen, setTimeChosen] = useState(false);
+    const[gameBegin, setGameBegin] = useState(false);
+    const[gameTime, setGameTime] = useState();
 
     const handleTimeChosen = () => {
-        setTimeChosen(!timeChosen)
-        
+        setTimeChosen(!timeChosen)   
     }
 
-    useEffect(() => {
-        console.log(gameTime)
-    }, [gameTime])
+    const handleGameBegin = () => {
+        setGameBegin(!gameBegin)   
+    }
 
+    const handleGameTime = (newTime) => {
+        setGameTime(newTime);
+    }
 
     return(
         <div className="mainMenu">
-            <div className="playFor">Play for - </div>
 
-            <button 
-            className="circular ui big button" 
-            id="oneMin"
-            onClick={handleGameTimeOne}
-            >
-                1 minute
-            </button>
-
-            <button 
-            className="circular ui big button" 
-            id="twoMin"
-            onClick={handleGameTimeTwo}
-            >
-                2 minutes
-            </button>
-
-            <button 
-            className="circular ui big button" 
-            id="fiveMin"
-            onClick={handleGameTimeFive}
-            >
-                5 minutes
-            </button>
-
+            {!gameBegin &&
+            <TimerOptions 
+            handleTimeChosen={handleTimeChosen}
+            handleGameTime={handleGameTime}
+            />
+            }
 
             {timeChosen && 
             <Ready 
             handleTimeChosen={handleTimeChosen}
+            handleGameBegin={handleGameBegin}
             />}
+
+
+        {/* <button 
+        className="ui semantic large green button"
+        onClick={() => {console.log(gameTime)}}
+        >Here</button> */}
+
+
         </div>
     )
 }
