@@ -86,3 +86,29 @@ border: 2px solid white;
     left: 40px;
 
 }
+
+.timer {
+    position: relative;
+    color: white;
+    font-size: 36px;
+    float: left;
+    top: -60px;
+    left: 35px;
+}
+
+.gameOver {
+
+    margin-top: -50px;
+    text-align: center;
+    justify-content: center;
+    z-index: 4;
+    background-color: beige;
+    height: 400px;
+}
+
+#returnButton {
+    position: relative;
+    bottom: -280px;
+    right: 10px;
+    float: right;
+}
