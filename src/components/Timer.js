@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import '../styles/MainMenu.css';
 const Timer = (props) => {
 
+    //Using useState for paused caused some issues
+    //So vanilla functions were used instead
     let paused = false;
 
     function pause() {
@@ -12,13 +14,15 @@ const Timer = (props) => {
         paused = false;
     }
 
-
+    //If use Effect gives trouble, try
+    //wrapping countdownBegin in an if statement
+    //depending on the state gameBegin
     useEffect(() => {
         countdownBegin();
-    }, [props.gameBegin])
+    }, [])
 
     const countdownBegin = () => {
-        //startingMinutes to be changed to customTime when setup
+        //This is the logic for the countdown timer
         const startingMinutes = props.gameTime;
         let time = startingMinutes * 60;
 
@@ -37,29 +41,20 @@ const Timer = (props) => {
             countDownEl.innerHTML = `${minutes}:${seconds}`;
             time--;
             
-            if(time < 0) {
-                
+            if(time < 0) {                
                 clearInterval(interval)
                 props.handleGameOver();
-
             }
-
-            }
-            
+            }     
         }
-
-
-
-
     }
-
 
     return(
         <div>
             <h3 
             className="timer"
             id="countdown"
-            ></h3>
+            >0:00</h3>
 
             <button 
             className="ui semantic huge green button"

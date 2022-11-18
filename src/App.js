@@ -20,11 +20,8 @@ function App() {
 
   return (
     <div className="app">
-
       <div className="title">♩♩ Reader</div>
-
       <div className="container">
-
 
         { !user  
         ? <Landing /> 
@@ -35,10 +32,9 @@ function App() {
         <MainMenu />
         }
 
-
-<h4 className="loggedIn" >User: {user? user.email : "Not logged in"} </h4>
+        <h4 className="loggedIn" >User: {user? user.email : "Not logged in"} </h4>
+      
       </div>
-
     </div>
   );
 }

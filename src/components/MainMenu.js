@@ -13,38 +13,51 @@ const MainMenu = () => {
     const[gameTime, setGameTime] = useState();
 
     const handleTimeChosen = () => {
+        //Triggers are you ready screen
         setTimeChosen(!timeChosen)   
     }
 
     const handleGameBegin = () => {
+        //Triggers timer and game to begin
         setGameBegin(!gameBegin)   
     }
 
     const handleGameTime = (newTime) => {
+        //Sends the chosen time to the countdown timer
         setGameTime(newTime);
     }
 
     const handleGameOver = () => {
+        //Triggers game over screen when time reaches 0
         setGameOver(!gameOver);
+    }
+
+    const handleResetGame = () => {
+        //Goes back to main menu and reverts all state
+        //To start again
+        setTimeChosen(false);
+        setGameBegin(false);
+        setGameOver(false);
+        setGameTime();
     }
 
     return(
         <div className="mainMenu">
 
-            {!gameBegin &&
+            { !gameBegin &&
             <TimerOptions 
             handleTimeChosen={handleTimeChosen}
             handleGameTime={handleGameTime}
             />
             }
 
-            {timeChosen && 
+            { timeChosen && 
             <Ready 
             handleTimeChosen={handleTimeChosen}
             handleGameBegin={handleGameBegin}
             />}
 
-            {gameBegin &&
+            { gameBegin &&
             <Timer 
             gameBegin={gameBegin}
             gameTime={gameTime}
@@ -53,14 +66,10 @@ const MainMenu = () => {
             }
 
             { gameOver &&
-            <GameOver />
-}
-
-        {/* <button 
-        className="ui semantic large green button"
-        onClick={() => {console.log(gameTime)}}
-        >Here</button> */}
-
+            <GameOver 
+            handleResetGame={handleResetGame}
+            />
+            }
 
         </div>
     )

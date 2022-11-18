@@ -2,12 +2,12 @@ import React from 'react';
 import '../styles/MainMenu.css';
 
 
-const GameOver = () => {
+const GameOver = (props) => {
 
 
     const handleReturnMainMenu = () => {
-        //Put in logic to revert the relevant states
-        //& bring back to main menu
+        //This reverts all state 
+        props.handleResetGame();
     }
 
     return(
@@ -19,6 +19,7 @@ const GameOver = () => {
             <button
             className="ui semantic blue button"
             id="returnButton"
+            onClick={handleReturnMainMenu}
             >Return to main menu</button>
         </div>
     )
