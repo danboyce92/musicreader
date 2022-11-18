@@ -4,6 +4,7 @@ import '../styles/MainMenu.css';
 import TimerOptions from './TimerOptions';
 import Timer from './Timer';
 import GameOver from './GameOver';
+import AnswerButtons from './AnswerButtons';
 
 const MainMenu = () => {
 
@@ -70,6 +71,8 @@ const MainMenu = () => {
             handleResetGame={handleResetGame}
             />
             }
+
+            <AnswerButtons />
 
         </div>
     )

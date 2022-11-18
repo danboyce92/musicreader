@@ -4,7 +4,7 @@
     justify-content: center;
     z-index: 2;
     background-color: black;
-    height: 400px;
+    height: 600px;
 
 }
 
@@ -103,12 +103,12 @@ border: 2px solid white;
     justify-content: center;
     z-index: 4;
     background-color: beige;
-    height: 400px;
+    height: 600px;
 }
 
 #returnButton {
     position: relative;
-    bottom: -280px;
+    bottom: -490px;
     right: 10px;
     float: right;
 }
