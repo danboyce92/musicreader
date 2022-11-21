@@ -1,0 +1,14 @@
+.gameScreen {
+    text-align: center;
+    justify-content: center;
+    z-index: 2;
+    background-color: black;
+    height: 600px;
+}
+
+#myimg {
+    position: absolute;
+    height: 225px;
+    margin-left: -430px;
+    margin-top: 70px;
+}

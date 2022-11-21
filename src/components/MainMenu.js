@@ -4,7 +4,7 @@ import '../styles/MainMenu.css';
 import TimerOptions from './TimerOptions';
 import Timer from './Timer';
 import GameOver from './GameOver';
-import AnswerButtons from './AnswerButtons';
+import GameScreen from './GameScreen';
 
 const MainMenu = () => {
 
@@ -72,7 +72,7 @@ const MainMenu = () => {
             />
             }
 
-            <AnswerButtons />
+            <GameScreen />
 
         </div>
     )
