@@ -26,6 +26,7 @@
 }
 
 #signOut {
+  z-index: 5;
   margin-top: -60px;
   float: right;
   margin-right: 0px;

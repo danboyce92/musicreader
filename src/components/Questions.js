@@ -3,20 +3,25 @@ import { getDownloadURL, getStorage, ref } from 'firebase/storage';
 import { app } from '../firebase/firebase';
 import '../styles/GameScreen.css';
 
-let pic;
+
+
 const storage = getStorage(app);
-getDownloadURL(ref(storage, 'A2.png'))
-    .then((url) => {
+   
+function getVideo() {
+    getDownloadURL(ref(storage, '/Ab1.mp4'))
+        .then((url) => {
 
-        const img = document.getElementById('myimg');
-        img.setAttribute('src', url);
-    })
-    .catch((error) => {
-        
-    });
+            const vid = document.getElementById('myvid');
+            vid.setAttribute('src', url);
+        })
+        .catch((error) => {
+            
+        });
+}
 
-    console.log(pic);
+getVideo();
 
+      
 
 const Questions = () => {
 
@@ -26,7 +31,10 @@ const Questions = () => {
         <div>
             <div>
 
-                <img id="myimg" alt="pic"></img>
+                <video id="myvid" autoPlay>
+                    <source type="video/mp4"></source>
+                </video>
+
             </div>
         </div>
     )

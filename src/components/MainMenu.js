@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import Ready from './Ready';
 import '../styles/MainMenu.css';
 import TimerOptions from './TimerOptions';
-import Timer from './Timer';
+import Timer from './Timer&AnsButtons';
 import GameOver from './GameOver';
 import GameScreen from './GameScreen';
+import GamePause from './GamePause';
 
 const MainMenu = () => {
 
@@ -12,6 +13,7 @@ const MainMenu = () => {
     const[gameBegin, setGameBegin] = useState(false);
     const[gameOver, setGameOver] = useState(false);
     const[gameTime, setGameTime] = useState();
+    const[gamePause, setGamePause] = useState(false);
 
     const handleTimeChosen = () => {
         //Triggers are you ready screen
@@ -31,6 +33,10 @@ const MainMenu = () => {
     const handleGameOver = () => {
         //Triggers game over screen when time reaches 0
         setGameOver(!gameOver);
+    }
+
+    const handleGamePause = () => {
+        setGamePause(!gamePause);
     }
 
     const handleResetGame = () => {
@@ -62,6 +68,7 @@ const MainMenu = () => {
             <Timer 
             gameBegin={gameBegin}
             gameTime={gameTime}
+            handleGamePause={handleGamePause}
             handleGameOver={handleGameOver}
             />
             }
@@ -73,6 +80,12 @@ const MainMenu = () => {
             }
 
             <GameScreen />
+
+            {/* { gamePause &&
+            <GamePause 
+            handleGamePause={handleGamePause}
+            />
+            } */}
 
         </div>
     )

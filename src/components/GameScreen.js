@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/GameScreen.css';
 import Questions from './Questions';
-import AnswerButtons from './AnswerButtons';
+
 
 const GameScreen = () => {
 
@@ -12,7 +12,7 @@ const GameScreen = () => {
             </div>
 
             <Questions />
-            <AnswerButtons />
+
 
         </div>
     )
