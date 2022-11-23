@@ -13,7 +13,8 @@ const MainMenu = () => {
     const[gameBegin, setGameBegin] = useState(false);
     const[gameOver, setGameOver] = useState(false);
     const[gameTime, setGameTime] = useState();
-    const[gamePause, setGamePause] = useState(false);
+
+    let [isRunning, setIsRunning] = useState(false);
 
     const handleTimeChosen = () => {
         //Triggers are you ready screen
@@ -30,14 +31,20 @@ const MainMenu = () => {
         setGameTime(newTime);
     }
 
+    const handleIsRunningTrue = () => {
+        setIsRunning(true);
+    }
+
+    const handleIsRunningFalse = () => {
+        setIsRunning(false);
+    }
+
+
     const handleGameOver = () => {
         //Triggers game over screen when time reaches 0
         setGameOver(!gameOver);
     }
 
-    const handleGamePause = () => {
-        setGamePause(!gamePause);
-    }
 
     const handleResetGame = () => {
         //Goes back to main menu and reverts all state
@@ -62,13 +69,16 @@ const MainMenu = () => {
             <Ready 
             handleTimeChosen={handleTimeChosen}
             handleGameBegin={handleGameBegin}
+            handleIsRunningTrue={handleIsRunningTrue}
             />}
 
             { gameBegin &&
             <Timer 
             gameBegin={gameBegin}
             gameTime={gameTime}
-            handleGamePause={handleGamePause}
+            isRunning={isRunning}
+            handleIsRunningTrue={handleIsRunningTrue}
+            handleIsRunningFalse={handleIsRunningFalse}
             handleGameOver={handleGameOver}
             />
             }

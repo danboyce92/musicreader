@@ -4,7 +4,7 @@ import '../styles/MainMenu.css';
 const GamePause = (props) => {
 
     const continueButton = () => {
-        props.handleUnPaused();
+        props.unPause();
 
     }
 

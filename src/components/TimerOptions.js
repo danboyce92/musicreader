@@ -5,17 +5,17 @@ const TimerOptions = (props) => {
 
     const handleGameTimeOne = async () => {
         props.handleTimeChosen();
-        props.handleGameTime(1);
+        props.handleGameTime(60);
     }
 
     const handleGameTimeTwo = async () => {
         props.handleTimeChosen();
-        props.handleGameTime(2);
+        props.handleGameTime(120);
     }
 
     const handleGameTimeFive = async () => {
         props.handleTimeChosen();
-        props.handleGameTime(5);
+        props.handleGameTime(300);
     }
 
     return(

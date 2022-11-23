@@ -11,6 +11,7 @@ const Ready = (props) => {
     const handleTimeYes = () => {
         props.handleTimeChosen()
         props.handleGameBegin()
+        props.handleIsRunningTrue()
     }
 
     return(

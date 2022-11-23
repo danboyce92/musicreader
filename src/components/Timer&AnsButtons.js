@@ -1,63 +1,45 @@
 import React, { useState, useEffect } from 'react';
+import { useInterval } from './useInterval';
 import GamePause from './GamePause';
 import '../styles/MainMenu.css';
 import '../styles/AnswerButtons.css';
 const Timer = (props) => {
 
+    const[isPaused, setIsPaused] = useState(false);
+    let [seconds, setSeconds] =useState(120);
 
-
-    let paused = false;
 
     //Using useState for paused caused some issues
     //So vanilla functions were used instead
 
+    useInterval(() => {
+        countdownTimer();
+      }, props.isRunning ? 1000 : null);
+    
 
-    const pause = () => {
-        paused = true;
-        //This breaks the timer
-        // props.handleGamePause();
-    }
-
-
-    const handleUnPaused = () => {
-        paused = false;
-    }
-
-    //If use Effect gives trouble, try
-    //wrapping countdownBegin in an if statement
-    //depending on the state gameBegin
-    useEffect(() => {
-        countdownBegin();
-    }, [])
-
-    const countdownBegin = () => {
-        //This is the logic for the countdown timer
-        const startingMinutes = props.gameTime;
-        let time = startingMinutes * 60;
-
+    const countdownTimer = () => {
+        setSeconds( seconds - 1);
+    
         const countDownEl = document.getElementById("countdown");
+        
+        let minutes = Math.floor(seconds/60);
+        let realSec = seconds % 60;
+    
+        realSec = realSec < 10 ? '0' + realSec : realSec;
+    
+        countDownEl.innerHTML = `${minutes}:${realSec}`;
+    
+      }
 
-        let interval = setInterval(updateCountdown, 1000);
+      const pause = () => {
+        setIsPaused(true);
+        props.handleIsRunningFalse();
+      }
 
-        function updateCountdown() {
-            
-            if(!paused){
-            const minutes = Math.floor(time / 60);
-            let seconds = time % 60;
-
-            seconds = seconds < 10 ? '0' + seconds : seconds;
-
-            countDownEl.innerHTML = `${minutes}:${seconds}`;
-            time--;
-            
-            if(time < 0) {                
-                clearInterval(interval)
-                props.handleGameOver();
-            }
-            }     
-        }
-    }
-
+      const unPause = () => {
+        setIsPaused(false);
+        props.handleIsRunningTrue();
+      }
 
     //Indvidual answer buttons functions
 
@@ -127,27 +109,6 @@ const Timer = (props) => {
             className="timer"
             id="countdown"
             >0:00</h3>
-
-            {/* <button 
-            className="ui semantic huge green button"
-            id="timerButton"
-            onClick={() => {countdownBegin()}}
-            >Start</button> */}
-
-            <button
-            className="ui semantic huge orange button"
-            id="timerButton"
-            // onClick={() => {pause()}}
-            >Pause</button>
-
-            <button
-            className="ui semantic huge yellow button"
-            id="timerButton"
-            // onClick={() => {unPause()}}
-            >Unpause</button>
-
-
-
 
             <div className="answerButtons">
                 <button 
@@ -224,9 +185,9 @@ const Timer = (props) => {
 
             </div>
 
-            { paused &&
-            <GamePause 
-            handleUnPaused={handleUnPaused}
+            { isPaused &&
+            <GamePause
+            unPause={unPause}
             />
             }
 

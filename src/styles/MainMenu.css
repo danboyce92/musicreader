@@ -65,7 +65,7 @@ border: 2px solid white;
 }
 
 .ready {
-    position: relative;
+    position: absolute;
     margin-left: 160px;
     border-radius: 12px;
     z-index: 3;
