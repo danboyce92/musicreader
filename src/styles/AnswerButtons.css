@@ -1,3 +1,9 @@
+.answerButtons {
+    position: absolute;
+    margin-left: 440px;
+}
+
+
 #ansButC {
     position: absolute;
     margin-top: 475px;
@@ -57,6 +63,8 @@
 
 #ansButG {
     position: absolute;
+
+    
     margin-top: 475px;
     margin-left: 60px;
     padding-left: 40px;

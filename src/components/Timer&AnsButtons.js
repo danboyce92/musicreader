@@ -6,6 +6,7 @@ import '../styles/AnswerButtons.css';
 const Timer = (props) => {
 
     const[isPaused, setIsPaused] = useState(false);
+    const[userAnswer, setUserAnswer] = useState('');
     let [seconds, setSeconds] =useState(120);
 
 
@@ -45,62 +46,64 @@ const Timer = (props) => {
 
     const cAnswerButton = () => {
         pause();
+        setUserAnswer('C')
 
     }
 
     const cSAnswerButton = () => {
         pause();
+        setUserAnswer('C#')
         
     }
 
     const dAnswerButton = () => {
         pause();
-        
+        setUserAnswer('D')
     }
 
     const dSAnswerButton = () => {
         pause();
-        
+        setUserAnswer('D#')
     }
 
     const eAnswerButton = () => {
         pause();
-        
+        setUserAnswer('E')
     }
 
     const fAnswerButton = () => {
         pause();
-        
+        setUserAnswer('F')
     }
 
     const fSAnswerButton = () => {
         pause();
-        
+        setUserAnswer('F#')
     }
 
     const gAnswerButton = () => {
         pause();
-        
+        setUserAnswer('G')
     }
 
     const gSAnswerButton = () => {
         pause();
-        
+        setUserAnswer('G#')
     }
 
     const aAnswerButton = () => {
         pause();
-        
+        setUserAnswer('A')
     }
 
     const aSAnswerButton = () => {
         pause();
-        
+        setUserAnswer('A#')
     }
 
     const bAnswerButton = () => {
         pause();
-        
+        setUserAnswer('B')
     }
 
     return(

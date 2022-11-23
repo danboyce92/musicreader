@@ -14,7 +14,7 @@ const MainMenu = () => {
     const[gameOver, setGameOver] = useState(false);
     const[gameTime, setGameTime] = useState();
 
-    let [isRunning, setIsRunning] = useState(false);
+    const [isRunning, setIsRunning] = useState(false);
 
     const handleTimeChosen = () => {
         //Triggers are you ready screen
@@ -83,19 +83,18 @@ const MainMenu = () => {
             />
             }
 
+
+            <GameScreen 
+            isRunning={isRunning}
+            />
+
+
             { gameOver &&
             <GameOver 
             handleResetGame={handleResetGame}
             />
             }
 
-            <GameScreen />
-
-            {/* { gamePause &&
-            <GamePause 
-            handleGamePause={handleGamePause}
-            />
-            } */}
 
         </div>
     )

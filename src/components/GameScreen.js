@@ -3,7 +3,7 @@ import '../styles/GameScreen.css';
 import Questions from './Questions';
 
 
-const GameScreen = () => {
+const GameScreen = (props) => {
 
     return(
         <div className="gameScreen">
