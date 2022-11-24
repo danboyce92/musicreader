@@ -1,10 +1,12 @@
 import React from 'react';
+import { getVideo } from './Questions';
 import '../styles/MainMenu.css';
 
 const GamePause = (props) => {
 
     const continueButton = () => {
         props.unPause();
+        getVideo();
 
     }
 

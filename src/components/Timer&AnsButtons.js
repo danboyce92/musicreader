@@ -10,9 +10,6 @@ const Timer = (props) => {
     let [seconds, setSeconds] =useState(120);
 
 
-    //Using useState for paused caused some issues
-    //So vanilla functions were used instead
-
     useInterval(() => {
         countdownTimer();
       }, props.isRunning ? 1000 : null);

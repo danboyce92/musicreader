@@ -1,4 +1,5 @@
 import React from 'react';
+import { getVideo } from './Questions';
 import '../styles/MainMenu.css';
 
 
@@ -12,6 +13,7 @@ const Ready = (props) => {
         props.handleTimeChosen()
         props.handleGameBegin()
         props.handleIsRunningTrue()
+        getVideo();
     }
 
     return(
