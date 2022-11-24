@@ -1,4 +1,4 @@
-
+import React, { useState } from 'react';
 
 export const questionsArr = 
 ['Ab1', 'Ab2', 'Ab3', 'A1', 'A2', 'A3', 'A#1', 'A#2', 'A#3', 
@@ -12,6 +12,8 @@ export const questionsArr =
 
 export function randomize() {
     let random = Math.floor(Math.random() * 41)
-
-    return questionsArr[random];
+    let result = questionsArr[random];
+    let correctAnswer = result.replace(/[0-9]/g, '');
+    
+    return result;
 }

@@ -8,6 +8,7 @@ const GamePause = (props) => {
         props.unPause();
         getVideo();
 
+
     }
 
     return(

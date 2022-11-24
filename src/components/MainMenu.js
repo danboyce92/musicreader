@@ -13,8 +13,13 @@ const MainMenu = () => {
     const[gameBegin, setGameBegin] = useState(false);
     const[gameOver, setGameOver] = useState(false);
     const[gameTime, setGameTime] = useState();
+    const[userAnswer, setUserAnswer] = useState('');
+    const[correctAnswer, setCorrectAnswer] = useState('');
 
     const [isRunning, setIsRunning] = useState(false);
+
+
+    console.log(correctAnswer);
 
     const handleTimeChosen = () => {
         //Triggers are you ready screen
@@ -37,6 +42,14 @@ const MainMenu = () => {
 
     const handleIsRunningFalse = () => {
         setIsRunning(false);
+    }
+
+    const handleUserAnswer = (answer) => {
+        setUserAnswer(answer)
+    }
+
+    const handleCorrectAnswer = (answer) => {
+        setCorrectAnswer(answer)
     }
 
 
@@ -80,12 +93,14 @@ const MainMenu = () => {
             handleIsRunningTrue={handleIsRunningTrue}
             handleIsRunningFalse={handleIsRunningFalse}
             handleGameOver={handleGameOver}
+            handleUserAnswer={handleUserAnswer}
             />
             }
 
 
             <GameScreen 
             isRunning={isRunning}
+            handleCorrectAnswer={handleCorrectAnswer}
             />
 
 

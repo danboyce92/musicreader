@@ -5,13 +5,16 @@ import Questions from './Questions';
 
 const GameScreen = (props) => {
 
+
     return(
         <div className="gameScreen">
             <div className="imageInsert">
 
             </div>
 
-            <Questions />
+            <Questions 
+            handleCorrectAnswer={props.handleCorrectAnswer}
+            />
 
 
         </div>

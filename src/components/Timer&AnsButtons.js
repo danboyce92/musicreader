@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useInterval } from './useInterval';
 import GamePause from './GamePause';
 import '../styles/MainMenu.css';
@@ -6,8 +6,7 @@ import '../styles/AnswerButtons.css';
 const Timer = (props) => {
 
     const[isPaused, setIsPaused] = useState(false);
-    const[userAnswer, setUserAnswer] = useState('');
-    let [seconds, setSeconds] =useState(120);
+    let [seconds, setSeconds] =useState(props.gameTime);
 
 
     useInterval(() => {
@@ -43,64 +42,64 @@ const Timer = (props) => {
 
     const cAnswerButton = () => {
         pause();
-        setUserAnswer('C')
+        props.handleUserAnswer('C')
 
     }
 
     const cSAnswerButton = () => {
         pause();
-        setUserAnswer('C#')
+        props.handleUserAnswer('C#')
         
     }
 
     const dAnswerButton = () => {
         pause();
-        setUserAnswer('D')
+        props.handleUserAnswer('D')
     }
 
     const dSAnswerButton = () => {
         pause();
-        setUserAnswer('D#')
+        props.handleUserAnswer('D#')
     }
 
     const eAnswerButton = () => {
         pause();
-        setUserAnswer('E')
+        props.handleUserAnswer('E')
     }
 
     const fAnswerButton = () => {
         pause();
-        setUserAnswer('F')
+        props.handleUserAnswer('F')
     }
 
     const fSAnswerButton = () => {
         pause();
-        setUserAnswer('F#')
+        props.handleUserAnswer('F#')
     }
 
     const gAnswerButton = () => {
         pause();
-        setUserAnswer('G')
+        props.handleUserAnswer('G')
     }
 
     const gSAnswerButton = () => {
         pause();
-        setUserAnswer('G#')
+        props.handleUserAnswer('G#')
     }
 
     const aAnswerButton = () => {
         pause();
-        setUserAnswer('A')
+        props.handleUserAnswer('A')
     }
 
     const aSAnswerButton = () => {
         pause();
-        setUserAnswer('A#')
+        props.handleUserAnswer('A#')
     }
 
     const bAnswerButton = () => {
         pause();
-        setUserAnswer('B')
+        props.handleUserAnswer('B')
     }
 
     return(
@@ -108,7 +107,7 @@ const Timer = (props) => {
             <h3 
             className="timer"
             id="countdown"
-            >0:00</h3>
+            ></h3>
 
             <div className="answerButtons">
                 <button 
