@@ -9,9 +9,15 @@ const Timer = (props) => {
     let [seconds, setSeconds] =useState(props.gameTime);
 
 
-    useInterval(() => {
+    const interval = useInterval(() => {
         countdownTimer();
       }, props.isRunning ? 1000 : null);
+
+      if(seconds <= -1){
+        clearInterval(interval);
+        props.handleIsRunningFalse();
+        props.handleGameOver();
+      }
     
 
     const countdownTimer = () => {
@@ -43,63 +49,75 @@ const Timer = (props) => {
     const cAnswerButton = () => {
         pause();
         props.handleUserAnswer('C')
+        props.handleAnswerCheck();
 
     }
 
     const cSAnswerButton = () => {
         pause();
         props.handleUserAnswer('C#')
+        props.handleAnswerCheck();
         
     }
 
     const dAnswerButton = () => {
         pause();
         props.handleUserAnswer('D')
+        props.handleAnswerCheck();
     }
 
     const dSAnswerButton = () => {
         pause();
         props.handleUserAnswer('D#')
+        props.handleAnswerCheck();
     }
 
     const eAnswerButton = () => {
         pause();
         props.handleUserAnswer('E')
+        props.handleAnswerCheck();
     }
 
     const fAnswerButton = () => {
         pause();
         props.handleUserAnswer('F')
+        props.handleAnswerCheck();
     }
 
     const fSAnswerButton = () => {
         pause();
         props.handleUserAnswer('F#')
+        props.handleAnswerCheck();
     }
 
     const gAnswerButton = () => {
         pause();
         props.handleUserAnswer('G')
+        props.handleAnswerCheck();
     }
 
     const gSAnswerButton = () => {
         pause();
         props.handleUserAnswer('G#')
+        props.handleAnswerCheck();
     }
 
     const aAnswerButton = () => {
         pause();
         props.handleUserAnswer('A')
+        props.handleAnswerCheck();
     }
 
     const aSAnswerButton = () => {
         pause();
         props.handleUserAnswer('A#')
+        props.handleAnswerCheck();
     }
 
     const bAnswerButton = () => {
         pause();
         props.handleUserAnswer('B')
+
     }
 
     return(
@@ -109,6 +127,7 @@ const Timer = (props) => {
             id="countdown"
             ></h3>
 
+            {!isPaused &&
             <div className="answerButtons">
                 <button 
                 id="ansButC"
@@ -183,10 +202,19 @@ const Timer = (props) => {
                 >B</button>
 
             </div>
+            }
 
             { isPaused &&
             <GamePause
             unPause={unPause}
+            score={props.score}
+            userAnswer={props.userAnswer}
+            correctAnswer={props.correctAnswer}
+            randomize={props.randomize}
+            getVideo={props.getVideo}
+            handleAnswerCheck={props.handleAnswerCheck}
+            handleUpdateScore={props.handleUpdateScore}
+            handleCorrectChoice={props.handleCorrectChoice}
             />
             }
 

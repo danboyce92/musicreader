@@ -6,16 +6,19 @@ const TimerOptions = (props) => {
     const handleGameTimeOne = async () => {
         props.handleTimeChosen();
         props.handleGameTime(60);
+        props.randomize();
     }
 
     const handleGameTimeTwo = async () => {
         props.handleTimeChosen();
         props.handleGameTime(120);
+        props.randomize();
     }
 
     const handleGameTimeFive = async () => {
         props.handleTimeChosen();
         props.handleGameTime(300);
+        props.randomize();
     }
 
     return(

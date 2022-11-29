@@ -13,7 +13,7 @@ const Ready = (props) => {
         props.handleTimeChosen()
         props.handleGameBegin()
         props.handleIsRunningTrue()
-        getVideo();
+        props.getVideo();
     }
 
     return(

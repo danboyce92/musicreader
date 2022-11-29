@@ -1,25 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { getVideo } from './Questions';
 import '../styles/MainMenu.css';
 
 const GamePause = (props) => {
 
-    const continueButton = () => {
-        props.unPause();
-        getVideo();
+    const[toScore, setToScore] = useState(false);
 
-
+    const scoreButton = () => {
+        setToScore(true);
+        props.handleAnswerCheck();
+        props.handleUpdateScore();
+        props.randomize();
     }
+
+    const continueButton = () => {
+        setToScore(false);
+        props.unPause();
+        props.getVideo();
+    }
+
+    let displayAnswer = props.correctAnswer.replace(/[0-9]/g, '');
 
     return(
         <div className="gamePause">
-            <div>Your answer is : Correct/Incorrect</div>
+            <div>Your answer is : {props.userAnswer} and the correct Answer is :  {displayAnswer}</div>
         
+            {!toScore &&
             <button 
-            className="ui semantic inverted large green button"
-            id="contButt"
-            onClick={() => {continueButton()}}
-            >Continue</button>
+                className="ui semantic inverted large green button"
+                id="scoreButt"
+                onClick={() => {scoreButton()}}
+                >See current score</button>
+            }
+
+            {toScore &&
+                <div>
+                    Your score is : {props.score}
+                </div>
+            }
+
+            {toScore &&
+            <button 
+                className="ui semantic inverted large green button"
+                id="contButt"
+                onClick={() => {continueButton()}}
+                >Continue</button>
+            }
+
         </div>
     )
 }

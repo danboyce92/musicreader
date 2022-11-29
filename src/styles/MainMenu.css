@@ -91,7 +91,7 @@ border: 2px solid white;
 }
 
 .timer {
-    position: relative;
+    position: absolute;
     color: white;
     font-size: 36px;
     float: left;
@@ -131,7 +131,21 @@ border: 2px solid white;
     margin-left: 200px;
 }
 
+#scoreButt {
+    position: relative;
+    margin-top: 130px;
+}
+
 #contButt {
     position: relative;
     margin-top: 130px;
+}
+
+.currentScore {
+    position: relative;
+    z-index: 6;
+    color: #FEE440;
+    margin-top: -20px;
+    margin-left: 700px;
+    
 }

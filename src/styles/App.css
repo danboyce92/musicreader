@@ -43,6 +43,7 @@
 }
 
 .loggedIn {
+  position: relative;
   margin-left: 00px;
   margin-top: 80px;
   color: #FEE440;
