@@ -3,18 +3,18 @@ import { getVideo } from './Questions';
 import '../styles/MainMenu.css';
 
 const GamePause = (props) => {
-
+    //Displays score screen
     const[toScore, setToScore] = useState(false);
 
     const scoreButton = () => {
         setToScore(true);
-        props.handleAnswerCheck();
         props.handleUpdateScore();
         props.randomize();
     }
 
     const continueButton = () => {
         setToScore(false);
+        props.handleCorrectChoice();
         props.unPause();
         props.getVideo();
     }

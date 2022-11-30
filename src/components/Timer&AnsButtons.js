@@ -49,69 +49,68 @@ const Timer = (props) => {
     const cAnswerButton = () => {
         pause();
         props.handleUserAnswer('C')
-        props.handleAnswerCheck();
+
 
     }
 
     const cSAnswerButton = () => {
         pause();
         props.handleUserAnswer('C#')
-        props.handleAnswerCheck();
+
         
     }
 
     const dAnswerButton = () => {
         pause();
         props.handleUserAnswer('D')
-        props.handleAnswerCheck();
+
     }
 
     const dSAnswerButton = () => {
         pause();
         props.handleUserAnswer('D#')
-        props.handleAnswerCheck();
+
     }
 
     const eAnswerButton = () => {
         pause();
         props.handleUserAnswer('E')
-        props.handleAnswerCheck();
+
     }
 
     const fAnswerButton = () => {
         pause();
         props.handleUserAnswer('F')
-        props.handleAnswerCheck();
+
     }
 
     const fSAnswerButton = () => {
         pause();
         props.handleUserAnswer('F#')
-        props.handleAnswerCheck();
+
     }
 
     const gAnswerButton = () => {
         pause();
         props.handleUserAnswer('G')
-        props.handleAnswerCheck();
+
     }
 
     const gSAnswerButton = () => {
         pause();
         props.handleUserAnswer('G#')
-        props.handleAnswerCheck();
+
     }
 
     const aAnswerButton = () => {
         pause();
         props.handleUserAnswer('A')
-        props.handleAnswerCheck();
+
     }
 
     const aSAnswerButton = () => {
         pause();
         props.handleUserAnswer('A#')
-        props.handleAnswerCheck();
     }
 
     const bAnswerButton = () => {

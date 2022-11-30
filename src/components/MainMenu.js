@@ -19,7 +19,7 @@ const MainMenu = () => {
     //Moves chosen time into the countdown timer
     const[gameTime, setGameTime] = useState();
     //Contains userAnswer
-    const[userAnswer, setUserAnswer] = useState('');
+    const[userAnswer, setUserAnswer] = useState('0');
     //Contains actual answer
     const[correctAnswer, setCorrectAnswer] = useState('');
     //Random note for video link and correct answer state
@@ -134,6 +134,11 @@ const MainMenu = () => {
         setRandom(result);
         
     }
+
+
+    useEffect(() => {
+        handleAnswerCheck();
+    }, [userAnswer])
 
 
     return(
