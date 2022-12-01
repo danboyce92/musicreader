@@ -8,7 +8,7 @@ import './styles/App.css';
 
 function App() {
 
-  const[user, setUser] = useState();
+  const [ user, setUser ] = useState();
 
 
   useEffect(() => {
@@ -28,7 +28,7 @@ function App() {
         : <SignoutButton />
         }
 
-        {user &&
+        {user &&  
         <MainMenu />
         }
 

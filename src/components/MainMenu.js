@@ -32,8 +32,6 @@ const MainMenu = () => {
     const [isRunning, setIsRunning] = useState(false);
 
 
-
-
     const handleTimeChosen = () => {
         //Triggers are you ready screen
         setTimeChosen(!timeChosen)   
