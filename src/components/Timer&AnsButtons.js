@@ -7,7 +7,6 @@ const Timer = (props) => {
 
     const[isPaused, setIsPaused] = useState(false);
     let [seconds, setSeconds] =useState(props.gameTime);
-    let [scorePoints, setScorePoints] = useState(500);
 
 
     //Timing and scoring logic
@@ -15,18 +14,10 @@ const Timer = (props) => {
         countdownTimer();
       }, props.isRunning ? 1000 : null);
 
-    const scoreInterval = useInterval(() => {
-        scoreLogic();
-      }, props.isRunning ? 10 : null)
-
       if(seconds <= -1){
         clearInterval(interval);
         props.handleIsRunningFalse();
         props.handleGameOver();
-      }
-
-      if(scorePoints < 0) {
-        clearInterval(scoreInterval);
       }
     
 
@@ -44,12 +35,6 @@ const Timer = (props) => {
     
       }
 
-      //Scoring Mechanism
-      const scoreLogic = () => {
-        setScorePoints(scorePoints -1);
-
-
-      }
 
       const pause = () => {
         setIsPaused(true);
@@ -234,12 +219,6 @@ const Timer = (props) => {
             handleCorrectChoice={props.handleCorrectChoice}
             />
             }
-
-            <button
-            onClick={() => {console.log(scorePoints)}}
-            >
-                This one
-            </button>
 
         </div>
     )

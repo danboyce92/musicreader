@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import Ready from './Ready';
+import { useInterval } from './useInterval';
 import '../styles/MainMenu.css';
 import { getDownloadURL, getStorage, ref } from 'firebase/storage';
-import { app } from '../firebase/firebase';
+import { app, writeScore } from '../firebase/firebase';
 import TimerOptions from './TimerOptions';
 import Timer from './Timer&AnsButtons';
 import GameOver from './GameOver';
 import GameScreen from './GameScreen';
 import GamePause from './GamePause';
 
-const MainMenu = () => {
+const MainMenu = ({ user }) => {
     //To render or unrender ready screen
     const[timeChosen, setTimeChosen] = useState(false);
     //Removes timer options when game begins
@@ -30,7 +31,19 @@ const MainMenu = () => {
     const[score, setScore] = useState(0);
     // State that pauses and unpauses countdown timer
     const [isRunning, setIsRunning] = useState(false);
+    //Current questions score
+    const [scorePoints, setScorePoints] = useState(500);
 
+
+    const scoreInterval =  useInterval(() => {
+        scoreLogic();
+    }, isRunning ? 10 : null)
+
+    const scoreLogic = () => {
+        if(isRunning){
+        setScorePoints(scorePoints -1);
+        } 
+    }
 
     const handleTimeChosen = () => {
         //Triggers are you ready screen
@@ -50,11 +63,17 @@ const MainMenu = () => {
     const handleIsRunningTrue = () => {
         //Triggers countdown timer
         setIsRunning(true);
+        //To reset scorepoints
+        setScorePoints(500);
     }
 
     const handleIsRunningFalse = () => {
         //Pauses countdown timer
         setIsRunning(false);
+        //To reset scorepoints
+        // setReset(false);
+
+
     }
 
     const handleUserAnswer = (answer) => {
@@ -71,7 +90,11 @@ const MainMenu = () => {
 
     const handleUpdateScore = () => {
         if(correctChoice){
-            setScore(score + 1);
+            if(scorePoints > 0){
+            setScore(score + scorePoints);
+            } else {
+                setScore(score + 100)
+            }
         }
     }
 
@@ -88,10 +111,12 @@ const MainMenu = () => {
     const handleResetGame = () => {
         //Goes back to main menu and reverts all state
         //To start again
+        writeScore(user.email, score)
         setTimeChosen(false);
         setGameBegin(false);
         setGameOver(false);
         setGameTime();
+        setScore(0);
     }
 
 
@@ -136,7 +161,12 @@ const MainMenu = () => {
 
     useEffect(() => {
         handleAnswerCheck();
-    }, [userAnswer])
+    }, [userAnswer]);
+
+
+    useEffect(() => {
+
+    }, [isRunning])
 
 
     return(
@@ -186,6 +216,8 @@ const MainMenu = () => {
 
             { gameOver &&
             <GameOver 
+            user={user}
+            score={score}
             handleResetGame={handleResetGame}
             />
             }
@@ -200,6 +232,12 @@ const MainMenu = () => {
                 Your current score is : {score}
             </div>
             }
+
+            <button
+            onClick={() => {console.log(scorePoints)}}
+            >
+                Thisone
+            </button>
 
         </div>
     )

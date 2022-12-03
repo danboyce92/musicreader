@@ -48,7 +48,9 @@ function App() {
         }
 
         {user && !loading &&
-          <MainMenu />
+          <MainMenu 
+          user={user}
+          />
         }
 
         <h4 className="loggedIn" >User: {user? user.email : "Not logged in"} </h4>
