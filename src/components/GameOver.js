@@ -7,15 +7,15 @@ const GameOver = (props) => {
 
     const db = getFirestore(app);
 
-    const username = props.user.email.slice(0, props.user.email.indexOf("@"));
+    // const username = props.user.email.slice(0, props.user.email.indexOf("@"));
 
-    console.log(username)
+    // console.log(username)
 
     const handleReturnMainMenu = () => {
         //This reverts all state 
-        setDoc(doc(db, username, "Scores"), {
-            score: props.score
-        });
+        // setDoc(doc(db, username, "Scores"), {
+        //     score: props.score
+        // });
 
         props.handleResetGame();
 

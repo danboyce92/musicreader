@@ -9,7 +9,7 @@ import '../styles/GameScreen.css';
 
       
 
-const Questions = (props) => {
+const Questions = () => {
 
 
     
@@ -17,7 +17,7 @@ const Questions = (props) => {
         let random = Math.floor(Math.random() * 41)
         let result = questionsArr[random];
         let correctAnswer = result.replace(/[0-9]/g, '');
-        props.handleCorrectAnswer(correctAnswer);
+
         return result;
     }
     

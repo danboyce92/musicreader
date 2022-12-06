@@ -14,11 +14,7 @@ const Timer = (props) => {
         countdownTimer();
       }, props.isRunning ? 1000 : null);
 
-      if(seconds <= -1){
-        clearInterval(interval);
-        props.handleIsRunningFalse();
-        props.handleGameOver();
-      }
+
     
 
     const countdownTimer = () => {
@@ -33,6 +29,13 @@ const Timer = (props) => {
     
         countDownEl.innerHTML = `${minutes}:${realSec}`;
     
+        if(seconds <= -1){
+            clearInterval(interval);
+            props.handleIsRunningFalse();
+            props.handleGameBegin();
+            props.handleGameOver();
+          }
+
       }
 
 

@@ -13,7 +13,7 @@ const GameScreen = (props) => {
             </div>
 
             <Questions 
-            handleCorrectAnswer={props.handleCorrectAnswer}
+
             />
 
 

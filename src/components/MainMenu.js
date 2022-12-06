@@ -111,7 +111,7 @@ const MainMenu = ({ user }) => {
     const handleResetGame = () => {
         //Goes back to main menu and reverts all state
         //To start again
-        writeScore(user.email, score)
+        // writeScore(user.email, score)
         setTimeChosen(false);
         setGameBegin(false);
         setGameOver(false);
@@ -164,10 +164,6 @@ const MainMenu = ({ user }) => {
     }, [userAnswer]);
 
 
-    useEffect(() => {
-
-    }, [isRunning])
-
 
     return(
         <div className="mainMenu">
@@ -205,18 +201,19 @@ const MainMenu = ({ user }) => {
             handleAnswerCheck={handleAnswerCheck}
             handleUpdateScore={handleUpdateScore}
             handleCorrectChoice={handleCorrectChoice}
+            handleGameBegin={handleGameBegin}
             />
             }
 
 
             <GameScreen 
-            isRunning={isRunning}
+
             />
 
 
             { gameOver &&
             <GameOver 
-            user={user}
+            // user={user}
             score={score}
             handleResetGame={handleResetGame}
             />
