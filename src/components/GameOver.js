@@ -3,21 +3,20 @@ import '../styles/MainMenu.css';
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
 import { app } from '../firebase/firebase';
 
-const GameOver = (props) => {
+const GameOver = ({
+    handleResetGame,
+    score
+    }) => {
 
     const db = getFirestore(app);
-
-    // const username = props.user.email.slice(0, props.user.email.indexOf("@"));
-
-    // console.log(username)
 
     const handleReturnMainMenu = () => {
         //This reverts all state 
         // setDoc(doc(db, username, "Scores"), {
-        //     score: props.score
+        //     score: score
         // });
 
-        props.handleResetGame();
+        handleResetGame();
 
     }
 
@@ -25,7 +24,7 @@ const GameOver = (props) => {
         <div className="gameOver">
             <div> Game Over</div>
             <br />
-            <div>Well done, your score is : </div>
+            <div>Well done, your score is : {score} </div>
 
             <button
             className="ui semantic blue button"

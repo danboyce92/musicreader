@@ -1,25 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 
-const TimerOptions = (props) => {
+const TimerOptions = ({
+    handleTimeChosen,
+    handleGameTime,
+    randomize
+    }) => {
 
-    const handleGameTimeOne = async () => {
-        props.handleTimeChosen();
-        props.handleGameTime(60);
-        props.randomize();
+    const handleGameTimeOne = async (time) => {
+        handleTimeChosen();
+        handleGameTime(time);
+        randomize();
     }
 
-    const handleGameTimeTwo = async () => {
-        props.handleTimeChosen();
-        props.handleGameTime(120);
-        props.randomize();
-    }
-
-    const handleGameTimeFive = async () => {
-        props.handleTimeChosen();
-        props.handleGameTime(300);
-        props.randomize();
-    }
 
     return(
         <div>
@@ -28,25 +21,25 @@ const TimerOptions = (props) => {
             <button 
             className="circular ui big button" 
             id="oneMin"
-            onClick={handleGameTimeOne}
+            onClick={() => {handleGameTimeOne(60)}}
             >
-                1 minute
+            1 minute
             </button>
 
             <button 
             className="circular ui big button" 
             id="twoMin"
-            onClick={handleGameTimeTwo}
+            onClick={() => {handleGameTimeOne(120)}}
             >
-                2 minutes
+            2 minutes
             </button>
 
             <button 
             className="circular ui big button" 
             id="fiveMin"
-            onClick={handleGameTimeFive}
+            onClick={() => {handleGameTimeOne(300)}}
             >
-                5 minutes
+            5 minutes
             </button>
 
         </div>

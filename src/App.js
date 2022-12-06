@@ -15,6 +15,13 @@ function App() {
   const [ loading, setLoading ] = useState(false);
   const { authUser, isLoading } = useAuth();
 
+  let username;
+
+  if(user){
+    username = user.email.slice(0, user.email.indexOf("@"));
+  }
+
+
   useEffect(() => {
     setLoading(true);
     onAuthStateChanged(auth, (currentUser) => {
@@ -49,7 +56,7 @@ function App() {
 
         {user && !loading &&
           <MainMenu 
-          user={user}
+          username={username}
           />
         }
 

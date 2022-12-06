@@ -3,19 +3,35 @@ import { useInterval } from './useInterval';
 import GamePause from './GamePause';
 import '../styles/MainMenu.css';
 import '../styles/AnswerButtons.css';
-const Timer = (props) => {
 
-    const[isPaused, setIsPaused] = useState(false);
-    let [seconds, setSeconds] =useState(props.gameTime);
+const Timer = ({ 
+    gameTime,
+    isRunning,
+    userAnswer,
+    correctAnswer,
+    score,
+    handleIsRunningTrue,
+    handleIsRunningFalse,
+    handleGameOver,
+    handleUserAnswer,
+    randomize,
+    getVideo,
+    handleAnswerCheck,
+    handleUpdateScore,
+    handleCorrectChoice,
+    handleGameBegin
+
+    }) => {
+
+    const [isPaused, setIsPaused] = useState(false);
+    const [seconds, setSeconds] = useState(gameTime);
 
 
     //Timing and scoring logic
     const interval = useInterval(() => {
         countdownTimer();
-      }, props.isRunning ? 1000 : null);
+      }, isRunning ? 1000 : null);
 
-
-    
 
     const countdownTimer = () => {
         setSeconds( seconds - 1);
@@ -31,179 +47,139 @@ const Timer = (props) => {
     
         if(seconds <= -1){
             clearInterval(interval);
-            props.handleIsRunningFalse();
-            props.handleGameBegin();
-            props.handleGameOver();
+            handleIsRunningFalse();
+            handleGameBegin();
+            handleGameOver();
           }
-
       }
 
 
       const pause = () => {
         setIsPaused(true);
-        props.handleIsRunningFalse();
+        handleIsRunningFalse();
       }
 
       const unPause = () => {
         setIsPaused(false);
-        props.handleIsRunningTrue();
+        handleIsRunningTrue();
       }
 
 
-    //Indvidual answer buttons functions
-
-    const cAnswerButton = () => {
-        pause();
-        props.handleUserAnswer('C')
-
-
-    }
-
-    const cSAnswerButton = () => {
-        pause();
-        props.handleUserAnswer('C#')
-
-        
-    }
-
-    const dAnswerButton = () => {
-        pause();
-        props.handleUserAnswer('D')
-
-    }
-
-    const dSAnswerButton = () => {
-        pause();
-        props.handleUserAnswer('D#')
-
-    }
-
-    const eAnswerButton = () => {
-        pause();
-        props.handleUserAnswer('E')
-
-    }
-
-    const fAnswerButton = () => {
-        pause();
-        props.handleUserAnswer('F')
-
-    }
-
-    const fSAnswerButton = () => {
-        pause();
-        props.handleUserAnswer('F#')
-
-    }
-
-    const gAnswerButton = () => {
-        pause();
-        props.handleUserAnswer('G')
-
-    }
-
-    const gSAnswerButton = () => {
-        pause();
-        props.handleUserAnswer('G#')
-
-    }
-
-    const aAnswerButton = () => {
-        pause();
-        props.handleUserAnswer('A')
-
-    }
-
-    const aSAnswerButton = () => {
-        pause();
-        props.handleUserAnswer('A#')
-    }
-
-    const bAnswerButton = () => {
-        pause();
-        props.handleUserAnswer('B')
-
-    }
-
     return(
         <div>
-            <h3 
+            <div 
             className="timer"
             id="countdown"
-            ></h3>
+            ></div>
 
             {!isPaused &&
             <div className="answerButtons">
                 <button 
                 id="ansButC"
                 className="circular ui big button"
-                onClick={() => {cAnswerButton()}}
+                onClick={
+                    () => {pause();
+                    handleUserAnswer('C')}
+                }
                 >C</button>
 
                 <button
                 id="ansButCS"
                 className="circular ui big button"   
-                onClick={() => {cSAnswerButton()}}           
+                onClick={
+                    () => {pause();
+                    handleUserAnswer('C#')}
+                }        
                 >C#/Db</button>
 
                 <button
                 id="ansButD"   
                 className="circular ui big button"  
-                onClick={() => {dAnswerButton()}}           
+                onClick={
+                    () => {pause();
+                    handleUserAnswer('D')}
+                }         
                 >D</button>
 
                 <button
                 id="ansButDS"   
                 className="circular ui big button"  
-                onClick={() => {dSAnswerButton()}}           
+                onClick={
+                    () => {pause();
+                    handleUserAnswer('D#')}
+                }        
                 >D#/Eb</button>
 
                 <button
                 id="ansButE"   
                 className="circular ui big button"   
-                onClick={() => {eAnswerButton()}}          
+                onClick={
+                    () => {pause();
+                    handleUserAnswer('E')}
+                }       
                 >E</button>
 
                 <button
                 id="ansButF" 
                 className="circular ui big button"  
-                onClick={() => {fAnswerButton()}}             
+                onClick={
+                    () => {pause();
+                    handleUserAnswer('F')}
+                }          
                 >F</button>
 
                 <button
                 id="ansButFS"   
                 className="circular ui big button"     
-                onClick={() => {fSAnswerButton()}}        
+                onClick={
+                    () => {pause();
+                    handleUserAnswer('F#')}
+                }       
                 >F#/Gb</button>
 
                 <button
                 id="ansButG"  
                 className="circular ui big button"   
-                onClick={() => {gAnswerButton()}}           
+                onClick={
+                    () => {pause();
+                    handleUserAnswer('G')}
+                }         
                 >G</button>
 
                 <button
                 id="ansButGS"  
                 className="circular ui big button"   
-                onClick={() => {gSAnswerButton()}}           
+                onClick={
+                    () => {pause();
+                    handleUserAnswer('G#')}
+                }          
                 >G#/Ab</button>
 
                 <button
                 id="ansButA"   
                 className="circular ui big button"   
-                onClick={() => {aAnswerButton()}}          
+                onClick={
+                    () => {pause();
+                    handleUserAnswer('A')}
+                }        
                 >A</button>
 
                 <button
                 id="ansButAS"  
                 className="circular ui big button"  
-                onClick={() => {aSAnswerButton()}}            
+                onClick={
+                    () => {pause();
+                    handleUserAnswer('A#')}
+                }          
                 >A#/Bb</button>
 
                 <button
                 id="ansButB"  
                 className="circular ui big button"   
-                onClick={() => {bAnswerButton()}}           
+                onClick={
+                    () => {pause();
+                    handleUserAnswer('B')}
+                }         
                 >B</button>
 
             </div>
@@ -212,14 +188,13 @@ const Timer = (props) => {
             { isPaused &&
             <GamePause
             unPause={unPause}
-            score={props.score}
-            userAnswer={props.userAnswer}
-            correctAnswer={props.correctAnswer}
-            randomize={props.randomize}
-            getVideo={props.getVideo}
-            handleAnswerCheck={props.handleAnswerCheck}
-            handleUpdateScore={props.handleUpdateScore}
-            handleCorrectChoice={props.handleCorrectChoice}
+            score={score}
+            userAnswer={userAnswer}
+            correctAnswer={correctAnswer}
+            randomize={randomize}
+            getVideo={getVideo}
+            handleUpdateScore={handleUpdateScore}
+            handleCorrectChoice={handleCorrectChoice}
             />
             }
 

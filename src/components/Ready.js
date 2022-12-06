@@ -1,19 +1,23 @@
 import React from 'react';
-import { getVideo } from './Questions';
 import '../styles/MainMenu.css';
 
 
-const Ready = (props) => {
+const Ready = ({
+    handleTimeChosen,
+    handleGameBegin,
+    handleIsRunningTrue,
+    getVideo
+    }) => {
 
     const handleTimeNo = () => {
-        props.handleTimeChosen()
+        handleTimeChosen()
     }
 
     const handleTimeYes = () => {
-        props.handleTimeChosen()
-        props.handleGameBegin()
-        props.handleIsRunningTrue()
-        props.getVideo();
+        handleTimeChosen()
+        handleGameBegin()
+        handleIsRunningTrue()
+        getVideo();
     }
 
     return(

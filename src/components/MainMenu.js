@@ -10,7 +10,7 @@ import GameOver from './GameOver';
 import GameScreen from './GameScreen';
 import GamePause from './GamePause';
 
-const MainMenu = ({ user }) => {
+const MainMenu = ({ username }) => {
     //To render or unrender ready screen
     const[timeChosen, setTimeChosen] = useState(false);
     //Removes timer options when game begins
@@ -90,7 +90,7 @@ const MainMenu = ({ user }) => {
 
     const handleUpdateScore = () => {
         if(correctChoice){
-            if(scorePoints > 0){
+            if(scorePoints > 100){
             setScore(score + scorePoints);
             } else {
                 setScore(score + 100)
@@ -205,11 +205,7 @@ const MainMenu = ({ user }) => {
             />
             }
 
-
-            <GameScreen 
-
-            />
-
+            <GameScreen />
 
             { gameOver &&
             <GameOver 
@@ -229,12 +225,6 @@ const MainMenu = ({ user }) => {
                 Your current score is : {score}
             </div>
             }
-
-            <button
-            onClick={() => {console.log(scorePoints)}}
-            >
-                Thisone
-            </button>
 
         </div>
     )

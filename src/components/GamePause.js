@@ -1,29 +1,38 @@
 import React, { useState } from 'react';
-import { getVideo } from './Questions';
 import '../styles/MainMenu.css';
 
-const GamePause = (props) => {
+const GamePause = ({
+    unPause,
+    score,
+    userAnswer,
+    correctAnswer,
+    randomize,
+    getVideo,
+    handleUpdateScore,
+    handleCorrectChoice
+    }) => {
+
     //Displays score screen
     const[toScore, setToScore] = useState(false);
 
     const scoreButton = () => {
         setToScore(true);
-        props.handleUpdateScore();
-        props.randomize();
+        handleUpdateScore();
+        randomize();
     }
 
     const continueButton = () => {
         setToScore(false);
-        props.handleCorrectChoice();
-        props.unPause();
-        props.getVideo();
+        handleCorrectChoice();
+        unPause();
+        getVideo();
     }
 
-    let displayAnswer = props.correctAnswer.replace(/[0-9]/g, '');
+    let displayAnswer = correctAnswer.replace(/[0-9]/g, '');
 
     return(
         <div className="gamePause">
-            <div>Your answer is : {props.userAnswer} and the correct Answer is :  {displayAnswer}</div>
+            <div>Your answer is : {userAnswer} and the correct Answer is :  {displayAnswer}</div>
         
             {!toScore &&
             <button 
@@ -35,7 +44,7 @@ const GamePause = (props) => {
 
             {toScore &&
                 <div>
-                    Your score is : {props.score}
+                    Your score is : {score}
                 </div>
             }
 
