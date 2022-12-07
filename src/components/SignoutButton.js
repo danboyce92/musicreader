@@ -12,7 +12,7 @@ const LogoutButton = () => {
     return (
         <div>
             <button 
-            className="ui semantic big inverted purple button" 
+            className="ui semantic big inverted white button" 
             id="signOut"
             onClick={logout}
             >Signout</button> 

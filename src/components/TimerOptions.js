@@ -15,8 +15,8 @@ const TimerOptions = ({
 
 
     return(
-        <div>
-            <div className="playFor">Play for - </div>
+        <div className="timebuttons">
+            
 
             <button 
             className="circular ui big button" 

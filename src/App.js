@@ -9,6 +9,7 @@ import MainMenu from './components/MainMenu';
 import Loading from './components/Loading';
 import './styles/App.css';
 
+
 function App() {
 
   const [ user, setUser ] = useState();
@@ -37,17 +38,11 @@ function App() {
   return ( 
 
     <div className="app">
-      <div className="title">♩♩ Reader</div>
+
       <div className="container">
 
-
-
-
-
-
-        { !user && !loading
-        ? <Landing /> 
-        : <SignoutButton />
+        { !user && !loading &&
+         <Landing /> 
         }
         
         {user && loading &&
@@ -56,15 +51,10 @@ function App() {
 
         {user && !loading &&
           <MainMenu 
+          user={user}
           username={username}
           />
         }
-
-        <h4 className="loggedIn" >User: {user? user.email : "Not logged in"} </h4>
-
-        <button
-        onClick={() => {console.log()}}
-        >Here</button>
       
       </div>
     </div>

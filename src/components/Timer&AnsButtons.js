@@ -10,6 +10,7 @@ const Timer = ({
     userAnswer,
     correctAnswer,
     score,
+    scorePoints,
     handleIsRunningTrue,
     handleIsRunningFalse,
     handleGameOver,
@@ -19,6 +20,7 @@ const Timer = ({
     handleAnswerCheck,
     handleUpdateScore,
     handleCorrectChoice,
+    correctChoice,
     handleGameBegin
 
     }) => {
@@ -189,8 +191,10 @@ const Timer = ({
             <GamePause
             unPause={unPause}
             score={score}
+            scorePoints={scorePoints}
             userAnswer={userAnswer}
             correctAnswer={correctAnswer}
+            correctChoice={correctChoice}
             randomize={randomize}
             getVideo={getVideo}
             handleUpdateScore={handleUpdateScore}

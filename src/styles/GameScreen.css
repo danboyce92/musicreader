@@ -1,16 +1,46 @@
 .gameScreen {
+    position: relative;
     text-align: center;
     justify-content: center;
-    z-index: 2;
+    z-index: 3;
     background-color: black;
     height: 600px;
     border-radius: 40px;
+    box-shadow:0 0 10px #ffffff;
+    margin-top: -180px;
+}
+
+.welcome {
+    width: 75%;
+    font-size: 40px;
+    margin-left: 100px;
+    line-height: 60px;
+    color:aliceblue;
+    
 }
 
 #myvid {
     position: absolute;
     height: 420px;
     width: 850px;
-    margin-left: -460px;
+    margin-left: -420px;
     margin-top: 0px;
+    z-index: 3;
+}
+
+.loggedIn {
+    position: relative;
+    left: -330px;
+    top: 620px;
+    color: #FEE440;
+  }
+
+  .currentScore {
+    position: absolute;
+    z-index: 6;
+    color: #FEE440;
+    top: 590px;
+    left: 650px;
+
+    
 }

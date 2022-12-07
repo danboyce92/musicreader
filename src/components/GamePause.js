@@ -4,12 +4,14 @@ import '../styles/MainMenu.css';
 const GamePause = ({
     unPause,
     score,
+    scorePoints,
     userAnswer,
     correctAnswer,
     randomize,
     getVideo,
     handleUpdateScore,
-    handleCorrectChoice
+    handleCorrectChoice,
+    correctChoice
     }) => {
 
     //Displays score screen
@@ -30,9 +32,24 @@ const GamePause = ({
 
     let displayAnswer = correctAnswer.replace(/[0-9]/g, '');
 
+    const roundPoints = () => {
+        if(scorePoints < 100) {
+            return 100
+        } else {
+            return scorePoints
+        }
+    }
+
     return(
         <div className="gamePause">
-            <div>Your answer is : {userAnswer} and the correct Answer is :  {displayAnswer}</div>
+            <div className="choice">You chose : {userAnswer} </div>
+            {correctChoice &&
+                <div className="correct">You are correct! you have gained {roundPoints()} points!</div>
+            }
+
+            {!correctChoice &&
+                <div className="incorrect">You are incorrect.</div>
+            }
         
             {!toScore &&
             <button 
@@ -43,7 +60,7 @@ const GamePause = ({
             }
 
             {toScore &&
-                <div>
+                <div className='currentScore'>
                     Your score is : {score}
                 </div>
             }

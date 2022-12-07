@@ -22,12 +22,12 @@ const GameOver = ({
 
     return(
         <div className="gameOver">
-            <div> Game Over</div>
+            <div className="game"> Game Over</div>
             <br />
-            <div>Well done, your score is : {score} </div>
+            <div className='over'>Well done, your score is : {score} </div>
 
             <button
-            className="ui semantic blue button"
+            className="ui semantic inverted white huge button"
             id="returnButton"
             onClick={handleReturnMainMenu}
             >Return to main menu</button>

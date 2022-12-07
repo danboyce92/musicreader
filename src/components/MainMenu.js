@@ -8,9 +8,11 @@ import TimerOptions from './TimerOptions';
 import Timer from './Timer&AnsButtons';
 import GameOver from './GameOver';
 import GameScreen from './GameScreen';
+import SignoutButton from './SignoutButton';
+import Logo from '../logo.png';
 import GamePause from './GamePause';
 
-const MainMenu = ({ username }) => {
+const MainMenu = ({ user, username }) => {
     //To render or unrender ready screen
     const[timeChosen, setTimeChosen] = useState(false);
     //Removes timer options when game begins
@@ -168,7 +170,9 @@ const MainMenu = ({ username }) => {
     return(
         <div className="mainMenu">
 
-            { !gameBegin &&
+            <img className="title" src={Logo} alt="logo" height="150px" width="200px" ></img>
+
+            { !gameBegin && !gameOver &&
             <TimerOptions 
             handleTimeChosen={handleTimeChosen}
             handleGameTime={handleGameTime}
@@ -191,7 +195,9 @@ const MainMenu = ({ username }) => {
             isRunning={isRunning}
             userAnswer={userAnswer}
             correctAnswer={correctAnswer}
+            correctChoice={correctChoice}
             score={score}
+            scorePoints={scorePoints}
             handleIsRunningTrue={handleIsRunningTrue}
             handleIsRunningFalse={handleIsRunningFalse}
             handleGameOver={handleGameOver}
@@ -205,7 +211,19 @@ const MainMenu = ({ username }) => {
             />
             }
 
-            <GameScreen />
+
+            <GameScreen 
+            gameBegin={gameBegin}
+            user={user}
+            username={username}
+            score={score}
+            />
+            
+            { user && !gameBegin &&
+            <SignoutButton />
+            }
+
+
 
             { gameOver &&
             <GameOver 
@@ -215,16 +233,7 @@ const MainMenu = ({ username }) => {
             />
             }
 
-            <button 
-            className="ui semantic green huge button"
-            onClick={() => {console.log(random)}}
-            >HERE</button>
 
-            {gameBegin &&
-            <div className="currentScore">
-                Your current score is : {score}
-            </div>
-            }
 
         </div>
     )
