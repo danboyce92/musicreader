@@ -163,7 +163,7 @@ const MainMenu = ({ user, username }) => {
 
     useEffect(() => {
         handleAnswerCheck();
-    }, [userAnswer]);
+    }, [!isRunning]);
 
 
 

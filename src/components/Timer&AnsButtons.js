@@ -198,6 +198,7 @@ const Timer = ({
             randomize={randomize}
             getVideo={getVideo}
             handleUpdateScore={handleUpdateScore}
+            handleAnswerCheck={handleAnswerCheck}
             handleCorrectChoice={handleCorrectChoice}
             />
             }

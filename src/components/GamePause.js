@@ -11,6 +11,7 @@ const GamePause = ({
     getVideo,
     handleUpdateScore,
     handleCorrectChoice,
+    handleAnswerCheck,
     correctChoice
     }) => {
 
@@ -60,7 +61,7 @@ const GamePause = ({
             }
 
             {toScore &&
-                <div className='currentScore'>
+                <div className='currentScoreIs'>
                     Your score is : {score}
                 </div>
             }
