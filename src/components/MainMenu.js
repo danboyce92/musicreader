@@ -3,7 +3,7 @@ import Ready from './Ready';
 import { useInterval } from './useInterval';
 import '../styles/MainMenu.css';
 import { getDownloadURL, getStorage, ref } from 'firebase/storage';
-import { app, writeScore } from '../firebase/firebase';
+import { app } from '../firebase/firebase';
 import TimerOptions from './TimerOptions';
 import Timer from './Timer&AnsButtons';
 import GameOver from './GameOver';
@@ -23,6 +23,8 @@ const MainMenu = ({ user, username }) => {
     const[gameTime, setGameTime] = useState();
     //Contains userAnswer
     const[userAnswer, setUserAnswer] = useState('0');
+    //To remove userAnswer Bug in scoring mechanism
+    const[userCount, setUserCount] = useState(0);
     //Contains actual answer
     const[correctAnswer, setCorrectAnswer] = useState('');
     //Random note for video link and correct answer state
@@ -81,11 +83,16 @@ const MainMenu = ({ user, username }) => {
     const handleUserAnswer = (answer) => {
         //Extracts user's answer
         setUserAnswer(answer)
+        //To fix Bug if user answers same twice can still be correct
+        setUserCount(userCount + 1);
     }
 
     const handleAnswerCheck = () => {
         let correct = correctAnswer.replace(/[0-9]/g, '');
-        if(userAnswer === correct){
+        let user = userAnswer;
+        // console.log(correct)
+        // console.log(user)
+        if(correct === user){
             setCorrectChoice(true)
         }
     }
@@ -113,7 +120,6 @@ const MainMenu = ({ user, username }) => {
     const handleResetGame = () => {
         //Goes back to main menu and reverts all state
         //To start again
-        // writeScore(user.email, score)
         setTimeChosen(false);
         setGameBegin(false);
         setGameOver(false);
@@ -153,9 +159,17 @@ const MainMenu = ({ user, username }) => {
     ]
 
     function randomize() {
+        
+        let array = [];
         let randomNumber = Math.floor(Math.random() * 41)
+        if(array.includes(randomNumber)) {
+            randomNumber = Math.floor(Math.random() * 41)
+            array.pop()
+        }
+
+        array.push(randomNumber);
         let result = questionsArr[randomNumber];
-        let correctAnswer = result.replace(/[0-9]/g, '');
+
         setRandom(result);
         
     }
@@ -163,7 +177,7 @@ const MainMenu = ({ user, username }) => {
 
     useEffect(() => {
         handleAnswerCheck();
-    }, [!isRunning]);
+    }, [userCount]);
 
 
 
@@ -229,6 +243,7 @@ const MainMenu = ({ user, username }) => {
             <GameOver 
             // user={user}
             score={score}
+            username={username}
             handleResetGame={handleResetGame}
             />
             }

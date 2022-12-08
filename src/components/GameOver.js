@@ -1,22 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/MainMenu.css';
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
+import { getDatabase, ref, set, child, get } from 'firebase/database';
 import { app } from '../firebase/firebase';
 
 const GameOver = ({
     handleResetGame,
-    score
+    score,
+    username
     }) => {
 
-    const db = getFirestore(app);
+    let recordId = 1;
 
-    const handleReturnMainMenu = () => {
+    const db = getFirestore(app);
+    const database = getDatabase(app);
+    const databaseRef = ref(database);
+
+    function writeNewId(Id) {
+        set(ref(database, 'Id'), {
+            Id: Id
+        })
+    }
+
+    let currentId;
+
+    const Id = async () => {
+        await get(child(databaseRef, 'Id')).then((snapshot) => {
+            if(snapshot.exists()) {
+                 currentId = snapshot.val();
+            } else {
+                console.log("No data available")
+            }
+        }).catch((error) => {
+            console.error(error);
+        })
+    }
+
+
+    const handleReturnMainMenu = async () => {
         //This reverts all state 
-        // setDoc(doc(db, username, "Scores"), {
-        //     score: score
-        // });
+
+        //Need to find a way to increment the currentId.Id value
+        await Id();
+        setDoc(doc(db, username, `Record${currentId.Id}`), {
+            score: score
+        });
 
         handleResetGame();
+        writeNewId(currentId.Id++);
 
     }
 
