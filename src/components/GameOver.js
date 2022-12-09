@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../styles/MainMenu.css';
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
 import { getDatabase, ref, set, child, get } from 'firebase/database';
@@ -10,20 +10,19 @@ const GameOver = ({
     username
     }) => {
 
-    let recordId = 1;
-
     const db = getFirestore(app);
     const database = getDatabase(app);
     const databaseRef = ref(database);
-
+    
+    //Increments Game Score Id
     function writeNewId(Id) {
         set(ref(database, 'Id'), {
             Id: Id
         })
     }
-
+    //variable used to identify the collection in database
     let currentId;
-
+    //Id saves snapshot image of firestore collection to currentId
     const Id = async () => {
         await get(child(databaseRef, 'Id')).then((snapshot) => {
             if(snapshot.exists()) {
@@ -38,17 +37,16 @@ const GameOver = ({
 
 
     const handleReturnMainMenu = async () => {
-        //This reverts all state 
-
-        //Need to find a way to increment the currentId.Id value
+        //Saves an image of database
         await Id();
+        //Records new score to firestore
         setDoc(doc(db, username, `Record${currentId.Id}`), {
             score: score
         });
-
+        //This reverts all state 
         handleResetGame();
-        writeNewId(currentId.Id++);
-
+        //To increment score Id for next game
+        writeNewId(currentId.Id + 1);
     }
 
     return(
