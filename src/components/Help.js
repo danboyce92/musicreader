@@ -1,5 +1,5 @@
 import React from 'react';
-
+    //Help button that will give a short guide on how to use the app
 const Help = () => {
 
     return(

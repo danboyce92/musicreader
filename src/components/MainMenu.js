@@ -11,6 +11,7 @@ import GameScreen from './GameScreen';
 import SignoutButton from './SignoutButton';
 import Logo from '../logo.png';
 import GamePause from './GamePause';
+import Graph from './Graph';
 
 const MainMenu = ({ user, username }) => {
     //To render or unrender ready screen
@@ -248,7 +249,9 @@ const MainMenu = ({ user, username }) => {
             />
             }
 
-
+            <Graph 
+            username={username}
+            />
 
         </div>
     )
