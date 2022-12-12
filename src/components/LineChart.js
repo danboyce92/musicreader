@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { Bar } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
+import { Chart as ChartJS } from 'chart.js/auto';
 
-const LineChart = ({ scores }) => {
+const LineChart = ({ data }) => {
 
 
 
     return(
         <div>
-            {/* <Bar data={scores} /> */}
+            <Line data={data} />
         </div>
     )
 }

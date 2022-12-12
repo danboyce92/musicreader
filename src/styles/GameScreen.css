@@ -29,8 +29,9 @@
 }
 
 .loggedIn {
-    position: relative;
-    left: -330px;
+    z-index: 2;
+    position: absolute;
+    left: 20px;
     top: 620px;
     color: #FEE440;
   }
@@ -39,8 +40,8 @@
     position: absolute;
     z-index: 6;
     color: #FEE440;
-    top: 590px;
-    left: 650px;
+    top: 620px;
+    right: 20px;
 
     
 }

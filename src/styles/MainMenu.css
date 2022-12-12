@@ -105,8 +105,9 @@
 
 .gameOver {
     font-family: 'Roboto', sans-serif;
-    position: relative;
-    margin-top: -668px;
+    position: absolute;
+    width: 900px;
+    margin-top: -600px;
     text-align: center;
     justify-content: center;
     z-index: 8;
@@ -192,11 +193,11 @@
 
 
   #signOut {
-    position: relative;
+    position: absolute;
     z-index: 10;
     margin-top: 20px;
-    
-    margin-right: 0px;
+    right: 30px;
+
   }
 
   .timebuttons {
@@ -218,3 +219,24 @@
 
   
   }
+
+  #graphButton {
+    z-index: 10;
+    position: absolute;
+    margin-top: 20px;
+    right: 320px;
+  }
+
+  #generateButton {
+    position: absolute;
+    left: 50px;
+  }
+
+  .graph {
+    z-index: 6;
+    position: absolute;
+    color:white;
+    margin-top: -480px;
+    width: 850px;
+  }
+

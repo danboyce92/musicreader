@@ -38,6 +38,8 @@ const MainMenu = ({ user, username }) => {
     const [isRunning, setIsRunning] = useState(false);
     //Current questions score
     const [scorePoints, setScorePoints] = useState(500);
+    //
+    const [graphToggle, setGraphToggle] = useState(false);
 
 
     const scoreInterval =  useInterval(() => {
@@ -127,6 +129,8 @@ const MainMenu = ({ user, username }) => {
         setGameTime();
         setScore(0);
     }
+    
+
 
 
 
@@ -187,7 +191,7 @@ const MainMenu = ({ user, username }) => {
 
             <img className="title" src={Logo} alt="logo" height="150px" width="200px" ></img>
 
-            { !gameBegin && !gameOver &&
+            { !gameBegin && !gameOver && !graphToggle &&
             <TimerOptions 
             handleTimeChosen={handleTimeChosen}
             handleGameTime={handleGameTime}
@@ -226,19 +230,14 @@ const MainMenu = ({ user, username }) => {
             />
             }
 
-
+            {
             <GameScreen 
             gameBegin={gameBegin}
             user={user}
             username={username}
             score={score}
             />
-            
-            { user && !gameBegin &&
-            <SignoutButton />
             }
-
-
 
             { gameOver &&
             <GameOver 
@@ -249,9 +248,24 @@ const MainMenu = ({ user, username }) => {
             />
             }
 
+            {graphToggle &&
             <Graph 
             username={username}
+            graphToggle={graphToggle}
             />
+            }
+
+            { user && !gameBegin &&
+            <SignoutButton />
+            }
+
+            { user && !gameBegin &&
+            <button
+            className='ui semantic inverted big white button bottomButton'
+            id='graphButton'
+            onClick={() => {setGraphToggle(!graphToggle)}}
+            >Graph button</button>
+            }
 
         </div>
     )
