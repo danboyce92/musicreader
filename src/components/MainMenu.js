@@ -264,7 +264,7 @@ const MainMenu = ({ user, username }) => {
             className='ui semantic inverted big white button bottomButton'
             id='graphButton'
             onClick={() => {setGraphToggle(!graphToggle)}}
-            >Graph button</button>
+            >Player Stats</button>
             }
 
         </div>
