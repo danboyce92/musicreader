@@ -1,0 +1,12 @@
+
+@mixin time-button() {
+  z-index: 5;
+  position: relative;
+  top: -90px;
+  left: 40px;
+  color: #FEE440;
+  background-color: #5F758E;
+  border: 2px solid white;
+  margin-left: 20px;
+  margin-right: 40px;
+}

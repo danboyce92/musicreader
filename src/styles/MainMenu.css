@@ -220,12 +220,7 @@
   
   }
 
-  #graphButton {
-    z-index: 10;
-    position: absolute;
-    margin-top: 20px;
-    right: 360px;
-  }
+
 
   #generateButton {
     position: absolute;

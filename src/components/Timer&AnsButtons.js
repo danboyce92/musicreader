@@ -1,210 +1,71 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  toggleIsRunning,
+  toggleGameOver,
+  setUserCount,
+  setUserAnswer,
+  toggleGameBegin,
+  setIsPaused,
+} from '../store';
 import { useInterval } from './useInterval';
+import { userAnswers } from './NoteArrays';
 import GamePause from './GamePause';
-import '../styles/MainMenu.css';
-import '../styles/AnswerButtons.css';
+// import '../styles/MainMenu.css';
+// import '../styles/AnswerButtons.css';
 
-const Timer = ({ 
-    gameTime,
-    isRunning,
-    userAnswer,
-    correctAnswer,
-    score,
-    scorePoints,
-    handleIsRunningTrue,
-    handleIsRunningFalse,
-    handleGameOver,
-    handleUserAnswer,
-    randomize,
-    getVideo,
-    handleAnswerCheck,
-    handleUpdateScore,
-    handleCorrectChoice,
-    correctChoice,
-    handleGameBegin
+const Timer = ({ randomize, getVideo }) => {
+  const dispatch = useDispatch();
 
-    }) => {
+  const { gameTime, isRunning, userCount, isPaused } = useSelector((state) => {
+    return {
+      gameTime: state.gameState.gameTime,
+      isRunning: state.gameState.isRunning,
+      userCount: state.userAnswer.userCount,
+      isPaused: state.gameState.isPaused,
+    };
+  });
 
-    const [isPaused, setIsPaused] = useState(false);
-    const [seconds, setSeconds] = useState(gameTime);
+  const [seconds, setSeconds] = useState(gameTime);
 
+  //Timing and scoring logic
+  const interval = useInterval(
+    () => {
+      countdownTimer();
+    },
+    isRunning ? 1000 : null
+  );
 
-    //Timing and scoring logic
-    const interval = useInterval(() => {
-        countdownTimer();
-      }, isRunning ? 1000 : null);
+  const countdownTimer = () => {
+    setSeconds(seconds - 1);
 
+    const countDownEl = document.getElementById('countdown');
 
-    const countdownTimer = () => {
-        setSeconds( seconds - 1);
-    
-        const countDownEl = document.getElementById("countdown");
-        
-        let minutes = Math.floor(seconds/60);
-        let realSec = seconds % 60;
-    
-        realSec = realSec < 10 ? '0' + realSec : realSec;
-    
-        countDownEl.innerHTML = `${minutes}:${realSec}`;
-    
-        if(seconds <= -1){
-            clearInterval(interval);
-            handleIsRunningFalse();
-            handleGameBegin();
-            handleGameOver();
-          }
-      }
+    let minutes = Math.floor(seconds / 60);
+    let realSec = seconds % 60;
 
+    realSec = realSec < 10 ? '0' + realSec : realSec;
 
-      const pause = () => {
-        setIsPaused(true);
-        handleIsRunningFalse();
-      }
+    countDownEl.innerHTML = `${minutes}:${realSec}`;
 
-      const unPause = () => {
-        setIsPaused(false);
-        handleIsRunningTrue();
-      }
+    if (seconds <= -1) {
+      clearInterval(interval);
+      //Pauses countdown timer
+      dispatch(toggleIsRunning(false));
+      //Triggers timer and game to begin
+      dispatch(toggleGameBegin());
+      //Triggers game over screen when time reaches 0
+      dispatch(toggleGameOver(true));
+    }
+  };
 
+  return (
+    <div>
+      <div className="timer" id="countdown"></div>
 
-    return(
-        <div>
-            <div 
-            className="timer"
-            id="countdown"
-            ></div>
-
-            {!isPaused &&
-            <div className="answerButtons">
-                <button 
-                id="ansButC"
-                className="circular ui big button"
-                onClick={
-                    () => {pause();
-                    handleUserAnswer('C')}
-                }
-                >C</button>
-
-                <button
-                id="ansButCS"
-                className="circular ui big button"   
-                onClick={
-                    () => {pause();
-                    handleUserAnswer('C#')}
-                }        
-                >C#/Db</button>
-
-                <button
-                id="ansButD"   
-                className="circular ui big button"  
-                onClick={
-                    () => {pause();
-                    handleUserAnswer('D')}
-                }         
-                >D</button>
-
-                <button
-                id="ansButDS"   
-                className="circular ui big button"  
-                onClick={
-                    () => {pause();
-                    handleUserAnswer('D#')}
-                }        
-                >D#/Eb</button>
-
-                <button
-                id="ansButE"   
-                className="circular ui big button"   
-                onClick={
-                    () => {pause();
-                    handleUserAnswer('E')}
-                }       
-                >E</button>
-
-                <button
-                id="ansButF" 
-                className="circular ui big button"  
-                onClick={
-                    () => {pause();
-                    handleUserAnswer('F')}
-                }          
-                >F</button>
-
-                <button
-                id="ansButFS"   
-                className="circular ui big button"     
-                onClick={
-                    () => {pause();
-                    handleUserAnswer('F#')}
-                }       
-                >F#/Gb</button>
-
-                <button
-                id="ansButG"  
-                className="circular ui big button"   
-                onClick={
-                    () => {pause();
-                    handleUserAnswer('G')}
-                }         
-                >G</button>
-
-                <button
-                id="ansButGS"  
-                className="circular ui big button"   
-                onClick={
-                    () => {pause();
-                    handleUserAnswer('G#')}
-                }          
-                >G#/Ab</button>
-
-                <button
-                id="ansButA"   
-                className="circular ui big button"   
-                onClick={
-                    () => {pause();
-                    handleUserAnswer('A')}
-                }        
-                >A</button>
-
-                <button
-                id="ansButAS"  
-                className="circular ui big button"  
-                onClick={
-                    () => {pause();
-                    handleUserAnswer('A#')}
-                }          
-                >A#/Bb</button>
-
-                <button
-                id="ansButB"  
-                className="circular ui big button"   
-                onClick={
-                    () => {pause();
-                    handleUserAnswer('B')}
-                }         
-                >B</button>
-
-            </div>
-            }
-
-            { isPaused &&
-            <GamePause
-            unPause={unPause}
-            score={score}
-            scorePoints={scorePoints}
-            userAnswer={userAnswer}
-            correctAnswer={correctAnswer}
-            correctChoice={correctChoice}
-            randomize={randomize}
-            getVideo={getVideo}
-            handleUpdateScore={handleUpdateScore}
-            handleAnswerCheck={handleAnswerCheck}
-            handleCorrectChoice={handleCorrectChoice}
-            />
-            }
-
-        </div>
-    )
-}
+      {isPaused && <GamePause randomize={randomize} getVideo={getVideo} />}
+    </div>
+  );
+};
 
 export default Timer;

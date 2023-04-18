@@ -20,7 +20,7 @@
 }
 
 #myvid {
-    position: absolute;
+
     height: 420px;
     width: 850px;
     margin-left: -440px;
@@ -28,13 +28,7 @@
     z-index: 3;
 }
 
-.loggedIn {
-    z-index: 2;
-    position: absolute;
-    left: 20px;
-    top: 620px;
-    color: #FEE440;
-  }
+
 
   .currentScore {
     position: absolute;
