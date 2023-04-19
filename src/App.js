@@ -8,6 +8,7 @@ import { toggleGraph } from './store';
 import Landing from './components/Landing';
 import MainMenu from './components/MainMenu';
 import Loading from './components/Loading';
+import Timer from './components/Timer';
 import TimerOptions from './components/TimerOptions';
 import SignoutButton from './components/SignoutButton';
 import Logo from './logo.png';
@@ -77,6 +78,7 @@ function App() {
             <h3 className="loggedIn">
               User: {user ? user.email : 'Not logged in'}{' '}
             </h3>
+            {gameBegin && <Timer />}
           </div>
         )}
       </div>

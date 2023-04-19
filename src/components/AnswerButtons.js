@@ -26,23 +26,23 @@ const AnswerButtons = () => {
   const map = userAnswers.map((ans) => {
     return (
       <button
-        key={ans}
-        id={`ansBut${ans}`}
+        key={ans.note}
+        id={`ansBut${ans.note}`}
         className="ui big button"
         onClick={() => {
           pause();
           //Extracts user's answer
-          dispatch(setUserAnswer(ans));
+          dispatch(setUserAnswer(ans.note));
           //To fix Bug if user answers same twice can still be correct
           dispatch(setUserCount(userCount + 1));
         }}
       >
-        {ans}
+        {ans.butt}
       </button>
     );
   });
 
-  return <div>{!isPaused && <div className="answerButtons">{map}</div>}</div>;
+  return <div className="answerButtons">{!isPaused && map}</div>;
 };
 
 export default AnswerButtons;

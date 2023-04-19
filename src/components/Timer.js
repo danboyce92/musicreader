@@ -14,7 +14,7 @@ import GamePause from './GamePause';
 // import '../styles/MainMenu.css';
 // import '../styles/AnswerButtons.css';
 
-const Timer = ({ randomize, getVideo }) => {
+const Timer = () => {
   const dispatch = useDispatch();
 
   const { gameTime, isRunning, userCount, isPaused } = useSelector((state) => {
@@ -59,13 +59,7 @@ const Timer = ({ randomize, getVideo }) => {
     }
   };
 
-  return (
-    <div>
-      <div className="timer" id="countdown"></div>
-
-      {isPaused && <GamePause randomize={randomize} getVideo={getVideo} />}
-    </div>
-  );
+  return <div className="timer" id="countdown"></div>;
 };
 
 export default Timer;

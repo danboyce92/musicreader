@@ -12,8 +12,8 @@ const GameStateSlice = createSlice({
     isPaused: false,
   },
   reducers: {
-    toggleGameBegin(state) {
-      state.gameBegin = !state.gameBegin;
+    toggleGameBegin(state, action) {
+      state.gameBegin = action.payload;
     },
     toggleGameOver(state, action) {
       state.gameOver = action.payload;

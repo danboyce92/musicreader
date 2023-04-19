@@ -5,7 +5,7 @@ import {
   toggleGameOver,
   setGameTime,
   setScore,
-  setIsPaused,
+  toggleTimeChosen,
 } from '../store';
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
 import { getDatabase, ref, set, child, get } from 'firebase/database';
@@ -25,10 +25,10 @@ const GameOver = ({ username }) => {
   const handleResetGame = () => {
     //Goes back to main menu and reverts all state
     //To start again
-    dispatch(setIsPaused(true));
-    dispatch(toggleGameBegin());
+
+    dispatch(toggleGameBegin(false));
     dispatch(toggleGameOver(false));
-    dispatch(setGameTime());
+    dispatch(setGameTime(0));
     dispatch(setScore(0));
   };
 

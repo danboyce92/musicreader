@@ -26,7 +26,7 @@ const Ready = () => {
 
   const handleTimeYes = () => {
     dispatch(toggleTimeChosen());
-    dispatch(toggleGameBegin());
+    dispatch(toggleGameBegin(true));
     //Triggers countdown timer
     dispatch(toggleIsRunning(true));
     //To reset scorepoints
@@ -44,7 +44,9 @@ const Ready = () => {
         const link = vid.getAttribute('src');
         dispatch(setCorrectAnswer(random));
       })
-      .catch((error) => {});
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   return (
