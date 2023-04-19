@@ -8,7 +8,7 @@ import Graph from './Graph';
 import { useDispatch, useSelector } from 'react-redux';
 import { setScorePoints } from '../store';
 
-const MainMenu = ({ user, username }) => {
+const MainMenu = ({ username }) => {
   const dispatch = useDispatch();
 
   const {
@@ -31,7 +31,7 @@ const MainMenu = ({ user, username }) => {
     };
   });
 
-  const scoreInterval = useInterval(
+  useInterval(
     () => {
       scoreLogic();
     },

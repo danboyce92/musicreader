@@ -1,28 +1,18 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  toggleIsRunning,
-  toggleGameOver,
-  setUserCount,
-  setUserAnswer,
-  toggleGameBegin,
-  setIsPaused,
-} from '../store';
+import { toggleIsRunning, toggleGameOver, toggleGameBegin } from '../store';
 import { useInterval } from './useInterval';
-import { userAnswers } from './NoteArrays';
-import GamePause from './GamePause';
+
 // import '../styles/MainMenu.css';
 // import '../styles/AnswerButtons.css';
 
 const Timer = () => {
   const dispatch = useDispatch();
 
-  const { gameTime, isRunning, userCount, isPaused } = useSelector((state) => {
+  const { gameTime, isRunning } = useSelector((state) => {
     return {
       gameTime: state.gameState.gameTime,
       isRunning: state.gameState.isRunning,
-      userCount: state.userAnswer.userCount,
-      isPaused: state.gameState.isPaused,
     };
   });
 

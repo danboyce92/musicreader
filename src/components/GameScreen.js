@@ -5,10 +5,9 @@ import AnswerButtons from './AnswerButtons';
 import Questions from './Questions';
 
 const GameScreen = () => {
-  const { gameBegin, score, isRunning } = useSelector((state) => {
+  const { gameBegin, isRunning } = useSelector((state) => {
     return {
       gameBegin: state.gameState.gameBegin,
-      score: state.gameScore.score,
       isRunning: state.gameState.isRunning,
     };
   });

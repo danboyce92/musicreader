@@ -52,7 +52,7 @@ const GamePause = () => {
       .then((url) => {
         const vid = document.getElementById('myvid');
         vid.setAttribute('src', url);
-        const link = vid.getAttribute('src');
+        vid.getAttribute('src');
         dispatch(setCorrectAnswer(random));
       })
       .catch((error) => {
@@ -98,8 +98,6 @@ const GamePause = () => {
     dispatch(setScorePoints(500));
     getVideo();
   };
-
-  let displayAnswer = correctAnswer.replace(/[0-9]/g, '');
 
   const roundPoints = () => {
     if (scorePoints < 100) {

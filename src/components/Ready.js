@@ -41,7 +41,7 @@ const Ready = () => {
       .then((url) => {
         const vid = document.getElementById('myvid');
         vid.setAttribute('src', url);
-        const link = vid.getAttribute('src');
+        vid.getAttribute('src');
         dispatch(setCorrectAnswer(random));
       })
       .catch((error) => {
