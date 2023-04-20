@@ -1,0 +1,149 @@
+@import '../helpers/mixins';
+
+
+$standard-small-button: 8px 12px;
+$sharp-small-button: 8px 6px;
+
+@media screen and (max-width: 550px) {
+  .title {
+    visibility: collapse;
+    
+  }
+
+  .signOut {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 6;
+    grid-row-end: 7;
+    padding: 10px;
+  }
+
+  .currentScore {
+    grid-column-start: 4;
+    grid-column-end: 6;
+    grid-row-start: 6;
+    grid-row-end: 7;
+
+  }
+
+  .timer {
+    grid-column-start: 2;
+    grid-column-end: 3;
+
+  }
+
+  .loggedIn {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 6;
+    grid-row-end: 7;
+    font-size: 1rem;
+  }
+
+  #graphButton {
+    visibility: collapse;
+  }
+
+  #scoreButt {
+    font-size: 10px;
+    transform: translateY(-12%);
+    
+  }
+
+  #oneMin {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    font-size: 1rem;
+    margin: auto 4px;
+    margin-left: 22px;
+    padding: 10px 25px;
+  }
+  #twoMin {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    font-size: 1rem;
+    margin: auto 4px;
+    padding: 10px 25px;
+  }
+  #fiveMin {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    font-size: 1rem;
+    margin: auto 4px;
+    padding: 10px 25px;
+  }
+
+  .ready, #noButton, #yesButton {
+    font-size: 12px;
+  }
+
+  .questions {
+    padding: 75px 10px;
+  }
+
+  #myvid {
+    width: 80%;
+    transform: scale(1.3) translateX(0%) translateY(-20%);
+
+
+  }
+
+  .answerButtons {
+    transform: translateX(-5%) translateY(-85%);
+    
+  }
+
+  #ansButC {
+    @include position(1, 2, 6, 7, $standard-small-button);
+  }
+
+  #ansButC\23 {
+    @include position(1, 3, 5, 6, $sharp-small-button);
+  }
+
+  #ansButD {
+    @include position(2, 3, 6, 7, $standard-small-button);
+  }
+
+  #ansButD\23 {
+    @include position(2, 4, 5, 6, $sharp-small-button);
+  }
+
+  #ansButE {
+    @include position(3, 4, 6, 7, $standard-small-button);
+  }
+
+  #ansButF {
+    @include position(4, 5, 6, 7, $standard-small-button);
+  }
+
+  #ansButF\23 {
+    @include position(4, 6, 5, 6, $sharp-small-button);
+  }
+
+  #ansButG {
+    @include position(5, 6, 6, 7, $standard-small-button);
+  }
+
+  #ansButG\23 {
+    @include position(5, 7, 5, 6, $sharp-small-button);
+  }
+
+  #ansButA {
+    @include position(6, 7, 6, 7, $standard-small-button);
+  }
+
+  #ansButA\23 {
+    @include position(6, 8, 5, 6, $sharp-small-button);
+  }
+
+  #ansButB {
+    @include position(7, 8, 6, 7, $standard-small-button);
+  }
+}

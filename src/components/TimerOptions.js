@@ -1,49 +1,42 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { toggleTimeChosen, setGameTime, setRandom } from '../store';
+import { questionsArr } from './NoteArrays';
 
+const TimerOptions = ({ id, time, disp }) => {
+  const dispatch = useDispatch();
 
-const TimerOptions = ({
-    handleTimeChosen,
-    handleGameTime,
-    randomize
-    }) => {
-
-    const handleGameTimeOne = async (time) => {
-        handleTimeChosen();
-        handleGameTime(time);
-        randomize();
+  function randomize() {
+    let array = [];
+    let randomNumber = Math.floor(Math.random() * 41);
+    if (array.includes(randomNumber)) {
+      randomNumber = Math.floor(Math.random() * 41);
+      array.pop();
     }
 
+    array.push(randomNumber);
+    let result = questionsArr[randomNumber];
 
-    return(
-        <div className="timebuttons">
-            
+    dispatch(setRandom(result));
+  }
 
-            <button 
-            className="circular ui big button" 
-            id="oneMin"
-            onClick={() => {handleGameTimeOne(60)}}
-            >
-            1 minute
-            </button>
+  const handleGameTimeOne = async (time) => {
+    dispatch(toggleTimeChosen());
+    dispatch(setGameTime(time));
+    randomize();
+  };
 
-            <button 
-            className="circular ui big button" 
-            id="twoMin"
-            onClick={() => {handleGameTimeOne(120)}}
-            >
-            2 minutes
-            </button>
-
-            <button 
-            className="circular ui big button" 
-            id="fiveMin"
-            onClick={() => {handleGameTimeOne(300)}}
-            >
-            5 minutes
-            </button>
-
-        </div>
-    )
-}
+  return (
+    <button
+      className="circular ui big button"
+      id={id}
+      onClick={() => {
+        handleGameTimeOne(time);
+      }}
+    >
+      {disp}
+    </button>
+  );
+};
 
 export default TimerOptions;

@@ -1,0 +1,96 @@
+.mainMenu {
+  grid-column-start: 1;
+  grid-column-end: 6;
+  grid-row-start: 2;
+  grid-row-end: 6;
+  z-index: 3;
+  margin: 10px 12px;
+  height: clamp(300px, 80vw, 600px);
+  background-color: black;
+  border-radius: 40px;
+  width: clamp(280px, 90vw, 800px);
+
+  @import './ready.scss';
+  @import './gameScreen.scss';
+
+#graphButton {
+  z-index: 5;
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 6;
+  grid-row-end: 7;
+  
+
+}
+
+.gamePause {
+  font-family: 'Roboto', sans-serif;
+  color: #FADB0F;
+  z-index: 6;
+  margin: 20% auto;
+  height: 35%;
+  width: 60%;
+  background-color: #7D8491;
+  border-radius: 40px;
+}
+.choice {
+  margin: auto;
+  text-align: center;
+  padding: 4px 4px;
+}
+.correct, .incorrect {
+  position: relative;
+  text-align: center;
+  padding: 4px 4px;
+}
+.currentScoreIs {
+  position: absolute;
+  left: 45%;
+  top: 46%;
+}
+#scoreButt, #contButt {
+  position: absolute;
+  left: 43%;
+  top: 48%;
+  width: 150px;
+}
+
+
+.gameOver {
+  font-family: 'Roboto', sans-serif;
+  height: 100%;
+  text-align: center;
+  line-height: 1.2;
+  justify-content: center;
+  z-index: 8;
+  color: #FADB0F;
+  font-size: clamp(1rem, 15vw, 2.5rem);
+  margin: auto;
+  background-color: #3a7766;
+  border-radius: 40px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #071013;
+
+  #returnButton {
+    margin: 40px;
+}
+}
+
+.graph {
+  z-index: 6;
+
+  color:white;
+  margin-top: 120px;
+  margin-left: 30px;
+  width: 85%;
+
+  #generateButton {
+
+    margin: 20px auto;
+    position: absolute;
+
+  }
+}
+
+}

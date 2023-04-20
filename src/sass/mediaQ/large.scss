@@ -1,0 +1,115 @@
+@import '../helpers/mixins';
+
+$standard-button: 10px 30px;
+$sharp-button: 10px 8px;
+
+
+@media screen and (min-width: 720px) {
+
+  .signOut {
+    grid-column-start: 5;
+    grid-column-end: 6;
+    grid-row-start: 6;
+    grid-row-end: 7;
+  }
+  .loggedIn {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 6;
+    grid-row-end: 7;
+  }
+
+  .currentScore {
+    grid-column-start: 4;
+    grid-column-end: 6;
+    grid-row-start: 6;
+    grid-row-end: 7;
+
+  }
+
+  .timer {
+    grid-column-start: 4;
+    grid-column-end: 5;
+
+  }
+
+  #oneMin {
+    font-size: 2rem;
+    margin: auto 26px;
+    padding: 8px 25px;
+  }
+  #twoMin {
+    font-size: 2rem;
+    margin: auto 26px;
+    padding: 8px 25px;
+  }
+  #fiveMin {
+    font-size: 2rem;
+    margin: auto 26px;
+    padding: 8px 25px;
+  }
+
+  .ready {
+    font-size: 32px;
+  }
+
+  .questions {
+    padding: 75px 50px;
+  }
+
+  #myvid {
+
+    width: 80%;
+    transform: scale(2.2) translateX(22%);
+
+
+  }
+
+  #ansButC {
+    @include position(1, 2, 6, 7, $standard-button);
+  }
+
+  #ansButC\23 {
+    @include position(1, 3, 5, 6, $sharp-button);
+  }
+
+  #ansButD {
+    @include position(2, 3, 6, 7, $standard-button);
+  }
+
+  #ansButD\23 {
+    @include position(2, 4, 5, 6, $sharp-button);
+  }
+
+  #ansButE {
+    @include position(3, 4, 6, 7, $standard-button);
+  }
+
+  #ansButF {
+    @include position(4, 5, 6, 7, $standard-button);
+  }
+
+  #ansButF\23 {
+    @include position(4, 6, 5, 6, $sharp-button);
+  }
+
+  #ansButG {
+    @include position(5, 6, 6, 7, $standard-button);
+  }
+
+  #ansButG\23 {
+    @include position(5, 7, 5, 6, $sharp-button);
+  }
+
+  #ansButA {
+    @include position(6, 7, 6, 7, $standard-button);
+  }
+
+  #ansButA\23 {
+    @include position(6, 8, 5, 6, $sharp-button);
+  }
+
+  #ansButB {
+    @include position(7, 8, 6, 7, $standard-button);
+  }
+}

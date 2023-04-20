@@ -1,45 +1,75 @@
 import React from 'react';
-import '../styles/MainMenu.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { getDownloadURL, getStorage, ref } from 'firebase/storage';
+import { app } from '../firebase/firebase';
+import {
+  toggleTimeChosen,
+  toggleGameBegin,
+  toggleIsRunning,
+  setScorePoints,
+  setCorrectAnswer,
+} from '../store';
 
+const Ready = () => {
+  const dispatch = useDispatch();
 
-const Ready = ({
-    handleTimeChosen,
-    handleGameBegin,
-    handleIsRunningTrue,
-    getVideo
-    }) => {
+  const { random } = useSelector((state) => {
+    return {
+      random: state.userAnswer.random,
+    };
+  });
 
-    const handleTimeNo = () => {
-        handleTimeChosen()
-    }
+  const handleTimeNo = () => {
+    dispatch(toggleTimeChosen());
+  };
 
-    const handleTimeYes = () => {
-        handleTimeChosen()
-        handleGameBegin()
-        handleIsRunningTrue()
-        getVideo();
-    }
+  const handleTimeYes = () => {
+    dispatch(toggleTimeChosen());
+    dispatch(toggleGameBegin(true));
+    //Triggers countdown timer
+    dispatch(toggleIsRunning(true));
+    //To reset scorepoints
+    dispatch(setScorePoints(500));
+    getVideo();
+  };
 
-    return(
-        <div>
-            <div className="ready">
-                Are you ready to start?
+  const storage = getStorage(app);
 
-                <button 
-                className="ui semantic red button"
-                id="noButton"
-                onClick={handleTimeNo}
-                >No, choose different time</button>
+  function getVideo() {
+    getDownloadURL(ref(storage, `/${random}.mp4`))
+      .then((url) => {
+        const vid = document.getElementById('myvid');
+        vid.setAttribute('src', url);
+        vid.getAttribute('src');
+        dispatch(setCorrectAnswer(random));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
-                <button
-                className="ui semantic green button"
-                id="yesButton"
-                onClick={handleTimeYes}
-                >Yes</button>
+  return (
+    <div>
+      <div className="ready">
+        <div className="sentence"> Are you ready to start?</div>
 
-            </div>
-        </div>
-    )
-}
+        <button
+          className="ui semantic red button"
+          id="noButton"
+          onClick={handleTimeNo}
+        >
+          Choose different time
+        </button>
+        <button
+          className="ui semantic green button"
+          id="yesButton"
+          onClick={handleTimeYes}
+        >
+          Yes
+        </button>
+      </div>
+    </div>
+  );
+};
 
 export default Ready;

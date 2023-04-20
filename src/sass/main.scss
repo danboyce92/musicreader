@@ -1,0 +1,66 @@
+@import 'mediaQ/small.scss';
+@import 'mediaQ/medium.scss';
+@import 'mediaQ/large.scss';
+
+
+.app {
+  background-color: #071013;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+
+
+  .container {
+
+    @import './pages/timerOptions.scss';
+    @import './pages/mainMenu.scss';
+
+    display: grid; 
+    z-index: 1;
+    column-gap: 10px;
+    row-gap: 5px;
+    margin: auto;
+    width: clamp(300px, 90vw, 810px);
+    border-radius: 15%;
+
+    .title {
+      grid-column-start: 1;
+      grid-column-end: 3;
+      grid-row-start: 1;
+      grid-row-end: 2;
+      margin: auto;
+      width: 125px;
+    }
+
+    .timer {
+      grid-row-start: 1;
+      grid-row-end: 2;
+      color: white;
+      font-size: 36px;
+      margin: auto;
+
+    }
+
+    .signOut {
+      margin: auto;
+
+    }
+
+    .loggedIn {
+      margin: auto;
+      z-index: 2;
+      color: #FEE440;
+
+    }
+
+    .currentScore {
+      margin: auto;
+      color: #FEE440;
+    }
+
+
+  }
+}
+
+
