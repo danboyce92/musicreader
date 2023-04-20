@@ -9,7 +9,7 @@ import {
   query,
   where,
 } from 'firebase/firestore';
-import { getDatabase, ref, set, child, get } from 'firebase/database';
+import { getDatabase, ref } from 'firebase/database';
 import { app } from '../firebase/firebase';
 import LineChart from './LineChart';
 
