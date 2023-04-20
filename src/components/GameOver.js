@@ -5,7 +5,6 @@ import {
   toggleGameOver,
   setGameTime,
   setScore,
-  toggleTimeChosen,
 } from '../store';
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
 import { getDatabase, ref, set, child, get } from 'firebase/database';

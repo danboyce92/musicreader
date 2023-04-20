@@ -3,9 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toggleIsRunning, toggleGameOver, toggleGameBegin } from '../store';
 import { useInterval } from './useInterval';
 
-// import '../styles/MainMenu.css';
-// import '../styles/AnswerButtons.css';
-
 const Timer = () => {
   const dispatch = useDispatch();
 

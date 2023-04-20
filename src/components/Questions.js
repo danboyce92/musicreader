@@ -1,5 +1,4 @@
 import React from 'react';
-// import '../styles/GameScreen.css';
 
 const Questions = () => {
   return (

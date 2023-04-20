@@ -5,7 +5,7 @@ import {
 } from 'firebase/auth';
 import { auth } from '../firebase/firebase';
 
-const Landing = (props) => {
+const Landing = () => {
   const [registerEmail, setRegisterEmail] = useState('');
   const [registerPassword, setRegisterPassword] = useState('');
   const [loginEmail, setLoginEmail] = useState('');
@@ -13,11 +13,7 @@ const Landing = (props) => {
 
   const loginButton = async () => {
     try {
-      const user = await signInWithEmailAndPassword(
-        auth,
-        loginEmail,
-        loginPassword
-      );
+      await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
     } catch (error) {
       console.log(error.message);
     }
@@ -25,7 +21,7 @@ const Landing = (props) => {
 
   const registerButton = async () => {
     try {
-      const user = await createUserWithEmailAndPassword(
+      await createUserWithEmailAndPassword(
         auth,
         registerEmail,
         registerPassword

@@ -12,7 +12,6 @@ import {
 import { questionsArr } from './NoteArrays';
 import { getDownloadURL, getStorage, ref } from 'firebase/storage';
 import { app } from '../firebase/firebase';
-// import '../styles/MainMenu.css';
 
 const GamePause = () => {
   const dispatch = useDispatch();

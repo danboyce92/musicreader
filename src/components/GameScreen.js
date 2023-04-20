@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-// import '../styles/GameScreen.css';
 import AnswerButtons from './AnswerButtons';
 import Questions from './Questions';
 

@@ -1,0 +1,28 @@
+.gameScreen {
+  display: grid;
+  text-align: center;
+  z-index: 3;
+  border-radius: 40px;
+
+  .questions {
+    grid-column-start: 1;
+    grid-column-end: 8;
+    grid-row-start: 1;
+    grid-row-end: 5;
+    overflow: hidden;
+    border-radius: 30px;
+    width: 90%;
+
+  }
+
+  .answerButtons {
+    grid-column-start: 1;
+    grid-column-end: 8;
+    grid-row-start: 5;
+    grid-row-end: 7;
+    display: grid;
+    place-items: center;
+
+  }
+
+}

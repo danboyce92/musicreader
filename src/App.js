@@ -12,8 +12,6 @@ import Timer from './components/Timer';
 import TimerOptions from './components/TimerOptions';
 import SignoutButton from './components/SignoutButton';
 import Logo from './logo.png';
-
-// import './styles/App.css';
 import './sass/main.scss';
 
 function App() {
@@ -59,7 +57,15 @@ function App() {
           <div className="container">
             <MainMenu user={user} username={username} />
             <img className="title" src={Logo} alt="logo"></img>
-            {!gameBegin && !gameOver && !graphToggle && <TimerOptions />}
+            {!gameBegin && !gameOver && !graphToggle && (
+              <TimerOptions id="oneMin" time={60} disp="1 min" />
+            )}
+            {!gameBegin && !gameOver && !graphToggle && (
+              <TimerOptions id="twoMin" time={120} disp="2 min" />
+            )}
+            {!gameBegin && !gameOver && !graphToggle && (
+              <TimerOptions id="fiveMin" time={300} disp="5 min" />
+            )}
             {user && !gameBegin && <SignoutButton />}
             {user && !gameBegin && !gameOver && (
               <button
@@ -75,9 +81,11 @@ function App() {
             {gameBegin && (
               <h3 className="currentScore">Your current score is : {score}</h3>
             )}
-            <h3 className="loggedIn">
+
+            <div className="loggedIn">
               User: {user ? user.email : 'Not logged in'}{' '}
-            </h3>
+            </div>
+
             {gameBegin && <Timer />}
           </div>
         )}

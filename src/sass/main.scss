@@ -1,23 +1,6 @@
-@use 'helpers/mixins' as mix;
+@import 'mediaQ/small.scss';
+@import 'mediaQ/large.scss';
 
-$standard-button: 10px 30px;
-$sharp-button: 10px 8px;
-
-@mixin position ($colSt, $colEn, $rowSt, $rowEn, $buttonSize) {
-  grid-column-start: $colSt;
-  grid-column-end: $colEn;
-  grid-row-start: $rowSt;
-  grid-row-end: $rowEn;
-  margin: 8px 10px;
-  padding: $buttonSize;
-  border-radius: 15px;
-
-  &:hover {
-    color: #fff;
-    background-color: #FEE440;
-  }
-
-}
 
 .app {
   background-color: #071013;
@@ -28,12 +11,16 @@ $sharp-button: 10px 8px;
 
 
   .container {
+
+    @import './pages/timerOptions.scss';
+    @import './pages/mainMenu.scss';
+
     display: grid; 
     z-index: 1;
     column-gap: 10px;
-    row-gap: 15px;
-    margin: auto 4px;
-    width: clamp(320px, 90vw, 810px);
+    row-gap: 5px;
+    margin: auto;
+    width: clamp(300px, 90vw, 810px);
     border-radius: 15%;
 
     .title {
@@ -54,82 +41,14 @@ $sharp-button: 10px 8px;
       font-size: 36px;
       margin: auto;
 
-  }
+    }
 
-    .timebuttons {
-      grid-column-start: 3;
-      grid-column-end: 6;
-      grid-row-start: 1;
-      grid-row-end: 2;
-      display: grid;
+    .signOut {
       margin: auto;
 
-
-
-      #oneMin {
-        z-index: 5;
-        color: #FEE440;
-        background-color: #5F758E;
-        border: 2px solid white;
-        margin: auto 26px;
-        padding: 8px 25px;
-        grid-column-start: 1;
-        grid-column-end: 2;
-    
-    }
-    
-    #oneMin:Hover {
-        color: blue;
-        background-color: #FEE440;
     }
 
-    #twoMin {
-      z-index: 5;
-      color: #FEE440;
-      background-color: #5F758E;
-      border: 2px solid white;
-      margin: auto 26px;
-      padding: 8px 25px;
-      grid-column-start: 2;
-      grid-column-end: 3;
-  
-  }
-  
-  #twoMin:Hover {
-      color: blue;
-      background-color: #FEE440;
-  }
-
-  #fiveMin {
-    z-index: 5;
-    color: #FEE440;
-    background-color: #5F758E;
-    border: 2px solid white;
-    margin: auto 26px;
-    padding: 8px 25px;
-    grid-column-start: 3;
-    grid-column-end: 4;
-
-}
-
-#fiveMin:Hover {
-    color: blue;
-    background-color: #FEE440;
-}
-
-    }
-
-    #signOut {
-      grid-column-start: 5;
-      grid-column-end: 6;
-      grid-row-start: 6;
-      grid-row-end: 7;
-    }
     .loggedIn {
-      grid-column-start: 1;
-      grid-column-end: 3;
-      grid-row-start: 6;
-      grid-row-end: 7;
       margin: auto;
       z-index: 2;
       color: #FEE440;
@@ -145,207 +64,8 @@ $sharp-button: 10px 8px;
       color: #FEE440;
     }
 
-    .mainMenu {
-      grid-column-start: 1;
-      grid-column-end: 6;
-      grid-row-start: 2;
-      grid-row-end: 6;
-      z-index: 3;
-      margin: auto 12px;
-      height: clamp(300px, 80vw, 600px);
-      background-color: black;
-      border-radius: 40px;
-      width: clamp(300px, 90vw, 800px);
 
-
-
-        .ready {
-          font-family: 'Roboto', sans-serif;
-          margin: auto;
-          border-radius: 12px;
-          z-index: 4;
-          width: 80%;
-          height: 100px;
-          margin: 25% auto;
-          font-size: 32px;
-          padding: 10px;
-          background-color: aliceblue;
-          align-items: center;
-
-          justify-content: center;
-          display: grid;
-
-          .sentence {
-            grid-column-start: 1;
-            grid-column-end: 3;
-            grid-row-start: 1;
-            grid-row-end: 2;
-            margin: auto;
-          }
-
-          #noButton {
-            grid-column-start: 1;
-            grid-column-end: 2;
-            grid-row-start: 2;
-            grid-row-end: 3;
-            margin: auto;
-        
-          }
-          #yesButton {
-            grid-column-start: 2;
-            grid-column-end: 3;
-            grid-row-start: 2;
-            grid-row-end: 3;
-            margin: auto;
-          }
-      }
-      
-
-      .gameScreen {
-        display: grid;
-        text-align: center;
-        z-index: 3;
-        border-radius: 40px;
-
-        .questions {
-          grid-column-start: 1;
-          grid-column-end: 8;
-          grid-row-start: 1;
-          grid-row-end: 5;
-
-          #myvid {
-            width: 80%;
-          }
-        }
-
-        .answerButtons {
-          grid-column-start: 1;
-          grid-column-end: 8;
-          grid-row-start: 5;
-          grid-row-end: 7;
-          display: grid;
-          
-          place-items: center;
-          margin: auto;
-        
-          #ansButC {
-            @include position(1, 2, 6, 7, $standard-button);
-          }
-        
-          #ansButC\23 {
-            @include position(1, 3, 5, 6, $sharp-button);
-          }
-        
-          #ansButD {
-            @include position(2, 3, 6, 7, $standard-button);
-          }
-        
-          #ansButD\23 {
-            @include position(2, 4, 5, 6, $sharp-button);
-          }
-        
-          #ansButE {
-            @include position(3, 4, 6, 7, $standard-button);
-          }
-        
-          #ansButF {
-            @include position(4, 5, 6, 7, $standard-button);
-          }
-        
-          #ansButF\23 {
-            @include position(4, 6, 5, 6, $sharp-button);
-          }
-        
-          #ansButG {
-            @include position(5, 6, 6, 7, $standard-button);
-          }
-        
-          #ansButG\23 {
-            @include position(5, 7, 5, 6, $sharp-button);
-          }
-        
-          #ansButA {
-            @include position(6, 7, 6, 7, $standard-button);
-          }
-        
-          #ansButA\23 {
-            @include position(6, 8, 5, 6, $sharp-button);
-          }
-        
-          #ansButB {
-            @include position(7, 8, 6, 7, $standard-button);
-          }
-        
-        }
-
-    }
-
-    #signOut {
-      margin: auto;
-      grid-column-start: 5;
-      grid-column-end: 6;
-      grid-row-start: 9;
-      grid-row-end: 10;
-    }
-
-    #graphButton {
-      z-index: 5;
-      margin: auto;
-      grid-column-start: 4;
-      grid-column-end: 5;
-      grid-row-start: 9;
-      grid-row-end: 10;
-
-    }
-
-    .gamePause {
-      font-family: 'Roboto', sans-serif;
-      color: #FADB0F;
-      z-index: 6;
-      height: 35%;
-      background-color: #7D8491;
-
-      border-radius: 40px;
-    }
-    .choice {
-      margin: auto;
-      text-align: center;
-      padding: 4px 4px;
-    }
-    .correct, .incorrect, .currentScoreIs {
-      margin: auto;
-      text-align: center;
-      padding: 4px 4px;
-    }
-    #scoreButt, #contButt {
-      margin: 3% 38%;
-    }
-
-    #contButt {
-      margin: 1% 42%;
-    }
-
-    .gameOver {
-      font-family: 'Roboto', sans-serif;
-      height: 100%;
-      text-align: center;
-      line-height: 1.2;
-      justify-content: center;
-      z-index: 8;
-      color: #FADB0F;
-      font-size: clamp(1rem, 15vw, 2.5rem);
-      margin: auto;
-      background-color: #3a7766;
-      border-radius: 40px;
-      border-style: solid;
-      border-width: 2px;
-      border-color: #071013;
-
-      #returnButton {
-        margin: 40px;
-    }
-  }
-
-    }
   }
 }
+
+

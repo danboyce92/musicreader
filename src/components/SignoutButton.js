@@ -8,7 +8,7 @@ const LogoutButton = () => {
   };
 
   return (
-    <div id="signOut">
+    <div className="signOut">
       <button
         className="ui semantic big inverted white button bottomButton"
         onClick={logout}

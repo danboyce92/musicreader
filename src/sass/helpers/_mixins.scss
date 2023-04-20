@@ -1,7 +1,18 @@
 
-@mixin position ($colSt, $colEn, $rowSt, $rowEn) {
+@mixin position ($colSt, $colEn, $rowSt, $rowEn, $buttonSize) {
   grid-column-start: $colSt;
   grid-column-end: $colEn;
   grid-row-start: $rowSt;
   grid-row-end: $rowEn;
+  margin: 8px 7px;
+  padding: $buttonSize;
+  border-radius: 15px;
+  font-size: clamp(10px, 2vw, 1.2rem);
+
+
+  &:hover {
+    color: #fff;
+    background-color: #FEE440;
+  }
+
 }

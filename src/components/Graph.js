@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import '../styles/MainMenu.css';
 import {
   getFirestore,
   getDocs,
@@ -11,7 +10,7 @@ import { getDatabase, ref } from 'firebase/database';
 import { app } from '../firebase/firebase';
 import LineChart from './LineChart';
 
-const Graph = ({ username, graphToggle, handleGraphToggle }) => {
+const Graph = ({ username, graphToggle }) => {
   const db = getFirestore(app);
   const database = getDatabase(app);
   const databaseRef = ref(database);

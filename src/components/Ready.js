@@ -9,7 +9,6 @@ import {
   setScorePoints,
   setCorrectAnswer,
 } from '../store';
-// import '../styles/MainMenu.css';
 
 const Ready = () => {
   const dispatch = useDispatch();
@@ -59,7 +58,7 @@ const Ready = () => {
           id="noButton"
           onClick={handleTimeNo}
         >
-          No, choose different time
+          Choose different time
         </button>
         <button
           className="ui semantic green button"

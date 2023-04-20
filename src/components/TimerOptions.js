@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { toggleTimeChosen, setGameTime, setRandom } from '../store';
 import { questionsArr } from './NoteArrays';
 
-const TimerOptions = () => {
+const TimerOptions = ({ id, time, disp }) => {
   const dispatch = useDispatch();
 
   function randomize() {
@@ -27,37 +27,15 @@ const TimerOptions = () => {
   };
 
   return (
-    <div className="timebuttons">
-      <button
-        className="circular ui big button"
-        id="oneMin"
-        onClick={() => {
-          handleGameTimeOne(60);
-        }}
-      >
-        1 minute
-      </button>
-
-      <button
-        className="circular ui big button"
-        id="twoMin"
-        onClick={() => {
-          handleGameTimeOne(120);
-        }}
-      >
-        2 minutes
-      </button>
-
-      <button
-        className="circular ui big button"
-        id="fiveMin"
-        onClick={() => {
-          handleGameTimeOne(300);
-        }}
-      >
-        5 minutes
-      </button>
-    </div>
+    <button
+      className="circular ui big button"
+      id={id}
+      onClick={() => {
+        handleGameTimeOne(time);
+      }}
+    >
+      {disp}
+    </button>
   );
 };
 

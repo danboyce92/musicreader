@@ -1,0 +1,74 @@
+.mainMenu {
+  grid-column-start: 1;
+  grid-column-end: 6;
+  grid-row-start: 2;
+  grid-row-end: 6;
+  z-index: 3;
+  margin: auto 12px;
+  height: clamp(300px, 80vw, 600px);
+  background-color: black;
+  border-radius: 40px;
+  width: clamp(280px, 90vw, 800px);
+
+  @import './ready.scss';
+  @import './gameScreen.scss';
+
+#graphButton {
+  z-index: 5;
+  margin: auto;
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 9;
+  grid-row-end: 10;
+
+}
+
+.gamePause {
+  font-family: 'Roboto', sans-serif;
+  color: #FADB0F;
+  z-index: 6;
+  height: 35%;
+  background-color: #7D8491;
+
+  border-radius: 40px;
+}
+.choice {
+  margin: auto;
+  text-align: center;
+  padding: 4px 4px;
+}
+.correct, .incorrect, .currentScoreIs {
+  margin: auto;
+  text-align: center;
+  padding: 4px 4px;
+}
+#scoreButt, #contButt {
+  margin: 3% 38%;
+}
+
+#contButt {
+  margin: 1% 42%;
+}
+
+.gameOver {
+  font-family: 'Roboto', sans-serif;
+  height: 100%;
+  text-align: center;
+  line-height: 1.2;
+  justify-content: center;
+  z-index: 8;
+  color: #FADB0F;
+  font-size: clamp(1rem, 15vw, 2.5rem);
+  margin: auto;
+  background-color: #3a7766;
+  border-radius: 40px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #071013;
+
+  #returnButton {
+    margin: 40px;
+}
+}
+
+}
