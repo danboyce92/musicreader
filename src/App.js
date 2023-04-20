@@ -68,18 +68,21 @@ function App() {
             )}
             {user && !gameBegin && <SignoutButton />}
             {user && !gameBegin && !gameOver && (
-              <button
-                className="ui semantic big inverted white button bottomButton"
-                id="graphButton"
-                onClick={() => {
-                  dispatch(toggleGraph());
-                }}
-              >
-                Player Stats
-              </button>
+              <div id="graphButton">
+                <button
+                  className="ui semantic big inverted white button bottomButton"
+                  onClick={() => {
+                    dispatch(toggleGraph());
+                  }}
+                >
+                  Player Stats
+                </button>
+              </div>
             )}
             {gameBegin && (
-              <h3 className="currentScore">Your current score is : {score}</h3>
+              <div className="currentScore">
+                Your current score is : {score}
+              </div>
             )}
 
             <div className="loggedIn">

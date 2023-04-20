@@ -19,6 +19,20 @@ $sharp-button: 10px 8px;
     grid-row-end: 7;
   }
 
+  .currentScore {
+    grid-column-start: 4;
+    grid-column-end: 6;
+    grid-row-start: 6;
+    grid-row-end: 7;
+
+  }
+
+  .timer {
+    grid-column-start: 4;
+    grid-column-end: 5;
+
+  }
+
   #oneMin {
     font-size: 2rem;
     margin: auto 26px;

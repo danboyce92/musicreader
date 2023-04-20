@@ -54,7 +54,7 @@ const MainMenu = ({ username }) => {
 
       {gameOver && <GameOver username={username} />}
 
-      {graphToggle && <Graph username={username} graphToggle={graphToggle} />}
+      {graphToggle && <Graph username={username} />}
     </div>
   );
 };

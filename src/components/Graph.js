@@ -1,19 +1,28 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import {
   getFirestore,
+  doc,
+  setDoc,
   getDocs,
   collection,
   query,
   where,
 } from 'firebase/firestore';
-import { getDatabase, ref } from 'firebase/database';
+import { getDatabase, ref, set, child, get } from 'firebase/database';
 import { app } from '../firebase/firebase';
 import LineChart from './LineChart';
 
-const Graph = ({ username, graphToggle }) => {
+const Graph = ({ username }) => {
   const db = getFirestore(app);
   const database = getDatabase(app);
   const databaseRef = ref(database);
+
+  const { graphToggle } = useSelector((state) => {
+    return {
+      graphToggle: state.gameState.graphToggle,
+    };
+  });
 
   //Attempt at retrieving scores
   const q = query(collection(db, username), where('score', '>=', 0));
