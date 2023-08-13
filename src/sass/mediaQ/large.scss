@@ -27,6 +27,23 @@ $sharp-button: 10px 8px;
 
   }
 
+  .gamePause {
+    margin: 30px auto;
+    height: 50%;
+    width: 80%;
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  #scoreButt, #contButt {
+
+    position: absolute;
+    width: 30%;
+    left: 35%;
+    bottom: 5%;
+    
+  }
+
   .timer {
     grid-column-start: 4;
     grid-column-end: 5;

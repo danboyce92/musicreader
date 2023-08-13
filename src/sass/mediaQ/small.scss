@@ -1,13 +1,26 @@
 @import '../helpers/mixins';
 
 
-$standard-small-button: 8px 12px;
-$sharp-small-button: 8px 6px;
+$standard-small-button: 8px 16px;
+$sharp-small-button: 8px 8px;
 
 @media screen and (max-width: 550px) {
+  .container {
+    position: relative;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+  
   .title {
-    visibility: collapse;
+    visibility: hidden;
     
+  }
+
+  .mainMenu {
+
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    
+
   }
 
   .signOut {
@@ -26,6 +39,8 @@ $sharp-small-button: 8px 6px;
 
   }
 
+
+
   .timer {
     grid-column-start: 2;
     grid-column-end: 3;
@@ -37,46 +52,50 @@ $sharp-small-button: 8px 6px;
     grid-column-end: 2;
     grid-row-start: 6;
     grid-row-end: 7;
-    font-size: 1rem;
+    font-size: .5rem;
+    text-align: center;
   }
 
   #graphButton {
     visibility: collapse;
   }
 
-  #scoreButt {
-    font-size: 10px;
-    transform: translateY(-12%);
+  #scoreButt, #contButt {
+
+    position: absolute;
+    width: 50%;
+    left: 25%;
+    bottom: 5%;
     
   }
 
   #oneMin {
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 1;
-    grid-row-end: 2;
-    font-size: 1rem;
-    margin: auto 4px;
-    margin-left: 22px;
-    padding: 10px 25px;
-  }
-  #twoMin {
     grid-column-start: 2;
     grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 2;
     font-size: 1rem;
-    margin: auto 4px;
-    padding: 10px 25px;
+    position: absolute;
+
+    padding: 05px 15px;
   }
-  #fiveMin {
+  #twoMin {
     grid-column-start: 3;
     grid-column-end: 4;
     grid-row-start: 1;
     grid-row-end: 2;
     font-size: 1rem;
-    margin: auto 4px;
-    padding: 10px 25px;
+    position: absolute;
+    padding: 05px 15px;
+  }
+  #fiveMin {
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    font-size: 1rem;
+    position: absolute;
+    padding: 05px 15px;
   }
 
   .ready, #noButton, #yesButton {
@@ -89,13 +108,13 @@ $sharp-small-button: 8px 6px;
 
   #myvid {
     width: 80%;
-    transform: scale(1.3) translateX(0%) translateY(-20%);
+    transform: scale(1.7) translateX(20%) translateY(-15%);
 
 
   }
 
   .answerButtons {
-    transform: translateX(-5%) translateY(-85%);
+    transform: translateY(-85%);
     
   }
 
@@ -145,5 +164,7 @@ $sharp-small-button: 8px 6px;
 
   #ansButB {
     @include position(7, 8, 6, 7, $standard-small-button);
+  }
+
   }
 }

@@ -13,6 +13,7 @@ const GameScreen = () => {
 
   return (
     <div className="gameScreen">
+      <div id="screen-filler"></div>
       {gameBegin && isRunning && <Questions />}
 
       {gameBegin && <AnswerButtons />}

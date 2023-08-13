@@ -1,8 +1,18 @@
 .gameScreen {
   display: grid;
+
   text-align: center;
   z-index: 3;
   border-radius: 40px;
+
+  #screen-filler {
+    grid-column-start: 1;
+    grid-column-end: 8;
+    grid-row-start: 1;
+    grid-row-end: 5;
+    width: 100%;
+    height: fit-content;
+  }
 
   .questions {
     grid-column-start: 1;

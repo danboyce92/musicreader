@@ -119,7 +119,7 @@ const GamePause = () => {
 
       {!toScore && (
         <button
-          className="ui semantic inverted large green button"
+          className="ui semantic inverted small green button"
           id="scoreButt"
           onClick={() => {
             scoreButton();
@@ -133,7 +133,7 @@ const GamePause = () => {
 
       {toScore && (
         <button
-          className="ui semantic inverted large green button"
+          className="ui semantic inverted small green button"
           id="contButt"
           onClick={() => {
             continueButton();

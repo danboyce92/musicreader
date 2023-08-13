@@ -8,6 +8,7 @@
   width: 100vw;
   height: 100vh;
   display: grid;
+  overflow: hidden;
   place-items: center;
 
 
@@ -17,6 +18,8 @@
     @import './pages/mainMenu.scss';
 
     display: grid; 
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(6, 1fr);
     z-index: 1;
     column-gap: 10px;
     row-gap: 5px;
@@ -25,10 +28,7 @@
     border-radius: 15%;
 
     .title {
-      grid-column-start: 1;
-      grid-column-end: 3;
-      grid-row-start: 1;
-      grid-row-end: 2;
+
       margin: auto;
       width: 125px;
     }
