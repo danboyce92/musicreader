@@ -30,7 +30,7 @@ $sharp-medium-button: 8px 12px;
 
   .currentScore {
     grid-column-start: 4;
-    grid-column-end: 6;
+    grid-column-end: 5;
     grid-row-start: 6;
     grid-row-end: 7;
 
@@ -54,7 +54,7 @@ $sharp-medium-button: 8px 12px;
     grid-column-end: 2;
     grid-row-start: 6;
     grid-row-end: 7;
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 
   #graphButton {
@@ -71,6 +71,15 @@ $sharp-medium-button: 8px 12px;
   }
 
   #oneMin {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    font-size: 1rem;
+    margin: auto;
+    padding: 10px 25px;
+  }
+  #twoMin {
     grid-column-start: 3;
     grid-column-end: 4;
     grid-row-start: 1;
@@ -79,18 +88,9 @@ $sharp-medium-button: 8px 12px;
     margin: auto;
     padding: 10px 25px;
   }
-  #twoMin {
+  #fiveMin {
     grid-column-start: 4;
     grid-column-end: 5;
-    grid-row-start: 1;
-    grid-row-end: 2;
-    font-size: 1rem;
-    margin: auto;
-    padding: 10px 25px;
-  }
-  #fiveMin {
-    grid-column-start: 5;
-    grid-column-end: 6;
     grid-row-start: 1;
     grid-row-end: 2;
     font-size: 1rem;

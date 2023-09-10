@@ -18,7 +18,7 @@
     @import './pages/mainMenu.scss';
 
     display: grid; 
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(6, 1fr);
     z-index: 1;
     column-gap: 10px;
@@ -34,6 +34,8 @@
     }
 
     .timer {
+      grid-column-start: 1;
+      grid-column-end: 2;
       grid-row-start: 1;
       grid-row-end: 2;
       color: white;

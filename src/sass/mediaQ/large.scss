@@ -7,24 +7,28 @@ $sharp-button: 10px 8px;
 @media screen and (min-width: 720px) {
 
   .signOut {
-    grid-column-start: 5;
-    grid-column-end: 6;
+    grid-column-start: 4;
+    grid-column-end: 5;
     grid-row-start: 6;
     grid-row-end: 7;
+    padding-bottom: 3rem;
   }
   .loggedIn {
     grid-column-start: 1;
     grid-column-end: 3;
     grid-row-start: 6;
     grid-row-end: 7;
+    font-size: 1.4rem;
+    padding-bottom: 3rem;
   }
 
   .currentScore {
     grid-column-start: 4;
-    grid-column-end: 6;
+    grid-column-end: 5;
     grid-row-start: 6;
     grid-row-end: 7;
-
+    font-size: 1.4rem;
+    padding-bottom: 3rem;
   }
 
   .gamePause {
@@ -44,6 +48,15 @@ $sharp-button: 10px 8px;
     
   }
 
+  #graphButton {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 6;
+    grid-row-end: 7;
+    padding-bottom: 3rem;
+    margin: auto;
+  }
+
   .timer {
     grid-column-start: 4;
     grid-column-end: 5;
@@ -51,17 +64,17 @@ $sharp-button: 10px 8px;
   }
 
   #oneMin {
-    font-size: 2rem;
+    font-size: 1.7rem;
     margin: auto 26px;
     padding: 8px 25px;
   }
   #twoMin {
-    font-size: 2rem;
+    font-size: 1.7rem;
     margin: auto 26px;
     padding: 8px 25px;
   }
   #fiveMin {
-    font-size: 2rem;
+    font-size: 1.7rem;
     margin: auto 26px;
     padding: 8px 25px;
   }

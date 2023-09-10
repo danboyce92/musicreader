@@ -1,14 +1,13 @@
 @import '../helpers/mixins';
 
 
-$standard-small-button: 8px 16px;
-$sharp-small-button: 8px 8px;
+$standard-small-button: 08px 12px;
+$sharp-small-button: 05px 08px;
 
 @media screen and (max-width: 550px) {
   .container {
     position: relative;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(6, 1fr);
+
   
   .title {
     visibility: hidden;
@@ -24,19 +23,21 @@ $sharp-small-button: 8px 8px;
   }
 
   .signOut {
-    grid-column-start: 2;
-    grid-column-end: 4;
+    grid-column-start: 3;
+    grid-column-end: 5;
     grid-row-start: 6;
     grid-row-end: 7;
-    padding: 10px;
+    padding-bottom: 2rem;
   }
 
   .currentScore {
-    grid-column-start: 4;
-    grid-column-end: 6;
+    grid-column-start: 3;
+    grid-column-end: 4;
     grid-row-start: 6;
     grid-row-end: 7;
-
+    margin: auto;
+    padding-bottom: 2rem;
+    text-align: center;
   }
 
 
@@ -52,8 +53,9 @@ $sharp-small-button: 8px 8px;
     grid-column-end: 2;
     grid-row-start: 6;
     grid-row-end: 7;
-    font-size: .5rem;
+    font-size: 1rem;
     text-align: center;
+    padding-bottom: 2rem;
   }
 
   #graphButton {
@@ -65,36 +67,36 @@ $sharp-small-button: 8px 8px;
     position: absolute;
     width: 50%;
     left: 25%;
-    bottom: 5%;
+    bottom: -25%;
     
   }
 
   #oneMin {
-    grid-column-start: 2;
+    grid-column-start: 1;
     grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 2;
     font-size: 1rem;
-    position: absolute;
+    margin: auto;
 
     padding: 05px 15px;
   }
   #twoMin {
-    grid-column-start: 3;
+    grid-column-start: 2;
     grid-column-end: 4;
     grid-row-start: 1;
     grid-row-end: 2;
     font-size: 1rem;
-    position: absolute;
+    margin: auto;
     padding: 05px 15px;
   }
   #fiveMin {
-    grid-column-start: 4;
+    grid-column-start: 3;
     grid-column-end: 5;
     grid-row-start: 1;
     grid-row-end: 2;
     font-size: 1rem;
-    position: absolute;
+    margin: auto;
     padding: 05px 15px;
   }
 
@@ -106,32 +108,48 @@ $sharp-small-button: 8px 8px;
     padding: 75px 10px;
   }
 
+  .choice {
+    height: 80px;
+  }
+  .correct, .incorrect {
+    height: 80px;
+
+  }
+  .currentScoreIs {
+    padding-bottom: 1rem;
+  }
+
   #myvid {
-    width: 80%;
-    transform: scale(1.7) translateX(20%) translateY(-15%);
+    width: 65%;
+    transform: scale(1.7) translateX(05%) translateY(-15%);
 
 
   }
 
   .answerButtons {
     transform: translateY(-85%);
+
     
   }
 
   #ansButC {
     @include position(1, 2, 6, 7, $standard-small-button);
+
   }
 
   #ansButC\23 {
     @include position(1, 3, 5, 6, $sharp-small-button);
+
   }
 
   #ansButD {
     @include position(2, 3, 6, 7, $standard-small-button);
+
   }
 
   #ansButD\23 {
     @include position(2, 4, 5, 6, $sharp-small-button);
+
   }
 
   #ansButE {
